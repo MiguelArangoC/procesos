@@ -1,9 +1,127 @@
 <!doctype html>
-<html lang="es"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>IPR | Análisis del problema</title><link rel="stylesheet" href="styles.css" /></head>
-<body><header><h1>IPR - Análisis del problema</h1><nav>
-<a href="home.html">Home</a><a href="productos.html">Productos</a><a href="planeacion-estrategica.html">Planeación estratégica</a><a href="contexto-software.html">Contexto del software</a><a href="analisis-problema.html">Análisis del problema</a><a href="situacion-actual.html">Situación actual</a>
-</nav></header>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IPR | Análisis del problema</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a class="logo-block" href="home.html">
+      <span class="logo-badge">IPR</span>
+      <span class="logo-text">
+        <span class="t1">Partes y Repuestos</span>
+        <span class="t2">by Inverprimos · Desde 1993</span>
+      </span>
+    </a>
+    <nav>
+      <a href="home.html">Empresa</a>
+      <a href="planeacion-estrategica.html">Planeación</a>
+      <a href="contexto-software.html">Contexto</a>
+      <a href="analisis-problema.html" class="active">Problema</a>
+      <a href="situacion-actual.html">AS IS / TO BE</a>
+      <a href="mejoras.html">Mejoras</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow">Refinamiento del problema</p>
+    <h2>Análisis del Problema</h2>
+    <p>Diagnóstico del proceso actual de logística y despacho de IPR Partes y Repuestos.</p>
+  </div>
+</div>
+
 <main>
-<section><h2>Modelo verbal del problema</h2><p>Actualmente, IPR maneja parte de su operación en hojas de cálculo y mensajería dispersa. Esto provoca retrasos en cotización, baja trazabilidad en órdenes de trabajo y dificultades para controlar inventario y tiempos de atención.</p></section>
-<section><h2>Mapa de procesos actual</h2><ol><li>Cliente solicita servicio por teléfono o redes sociales.</li><li>Asesor registra datos manualmente y envía cotización.</li><li>Coordinador asigna técnico por disponibilidad en chat.</li><li>Técnico reporta ejecución con evidencias no estandarizadas.</li><li>Administración consolida información para facturación y reportes.</li></ol></section>
-</main><footer>© 2026 IPR - Diagnóstico del problema.</footer></body></html>
+
+  <section>
+    <h2><span class="ico">🔍</span> Problema principal (refinado)</h2>
+    <div class="compare">
+      <div class="compare-box asis">
+        <p class="label">⚠️ Planteamiento original (vago)</p>
+        <p>«La empresa tiene dificultades para atender a sus clientes a nivel nacional».</p>
+      </div>
+      <div class="compare-box tobe">
+        <p class="label">✅ Problema específico</p>
+        <p>La <strong>ausencia de integración</strong> entre el canal de ventas (web, WhatsApp, teléfono), el sistema de inventario multi-sede y el seguimiento de despachos genera <strong>demoras, reprocesos manuales y falta de visibilidad</strong> para el cliente.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="ico">📋</span> Modelo verbal del proceso AS IS</h2>
+    <p>Descripción del proceso de logística y despacho tal como ocurre actualmente en IPR Partes y Repuestos:</p>
+
+    <div class="steps" style="margin-top:1.2rem">
+
+      <div class="step">
+        <span class="step-num">1</span>
+        <strong>Recepción del pedido</strong>
+        <p>El cliente —técnico de refrigeración, instalador o distribuidor— realiza su pedido por uno de tres canales independientes: página web, WhatsApp al asesor comercial, o línea telefónica. Cada canal opera sin integración entre sí.</p>
+      </div>
+
+      <div class="step">
+        <span class="step-num">2</span>
+        <strong>Verificación de disponibilidad</strong>
+        <p>El asesor comercial registra el pedido manualmente en el sistema interno y verifica disponibilidad en la bodega de la ciudad más cercana. Si no hay stock, consulta con otras bodegas generando demoras y comunicaciones adicionales entre sedes.</p>
+      </div>
+
+      <div class="step">
+        <span class="step-num">3</span>
+        <strong>Confirmación y pago</strong>
+        <p>Al confirmar disponibilidad, el asesor informa costo, condición de entrega (domicilio gratuito o retiro en bodega) y tiempo estimado. El cliente confirma y paga: anticipado o contra entrega según historial crediticio.</p>
+      </div>
+
+      <div class="step">
+        <span class="step-num">4</span>
+        <strong>Alistamiento y despacho</strong>
+        <p>Con el pago confirmado, el asesor genera la orden de despacho manualmente y la entrega a bodega. El personal ubica, empaca y entrega al transportador: mensajería propia en Medellín, servicios tercerizados en otras ciudades.</p>
+      </div>
+
+      <div class="step">
+        <span class="step-num">5</span>
+        <strong>Seguimiento y cierre (reactivo)</strong>
+        <p>El seguimiento es <strong>reactivo</strong>: el cliente debe llamar para conocer el estado de su pedido. No existe sistema automatizado de notificaciones. Las novedades (daños, faltantes, dirección incorrecta) se gestionan manualmente, sin trazabilidad.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="ico">⚠️</span> Principales puntos de dolor identificados</h2>
+    <div class="grid">
+      <article class="card">
+        <h3>📵 Canales desconectados</h3>
+        <p>Web, WhatsApp y teléfono operan independientemente. No hay visión unificada del pedido.</p>
+      </article>
+      <article class="card">
+        <h3>🗂️ Inventario manual</h3>
+        <p>El asesor verifica stock sede por sede. No hay consulta centralizada en tiempo real.</p>
+      </article>
+      <article class="card">
+        <h3>📝 Órdenes en papel</h3>
+        <p>La generación de órdenes de despacho es manual, propensa a errores y sin trazabilidad digital.</p>
+      </article>
+      <article class="card">
+        <h3>📭 Sin tracking</h3>
+        <p>El cliente no recibe notificaciones. Debe llamar para conocer el estado de su entrega.</p>
+      </article>
+      <article class="card">
+        <h3>🔄 Reprocesos sin registro</h3>
+        <p>Las novedades post-despacho se resuelven manualmente sin un flujo de excepción definido.</p>
+      </article>
+      <article class="card">
+        <h3>⏱️ Asesor en todo</h3>
+        <p>El asesor interviene en cada pedido, incluyendo los estándar que no requieren atención especial.</p>
+      </article>
+    </div>
+  </section>
+
+</main>
+
+<footer>© 2026 IPR Partes y Repuestos by Inverprimos · Universidad de Medellín — Proyecto Procesos de Negocio</footer>
+</body>
+</html>

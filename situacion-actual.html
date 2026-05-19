@@ -1,8 +1,81 @@
 <!doctype html>
-<html lang="es"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>IPR | Situación actual</title><link rel="stylesheet" href="styles.css" /></head>
-<body><header><h1>IPR - Situación actual</h1><nav>
-<a href="home.html">Home</a><a href="productos.html">Productos</a><a href="planeacion-estrategica.html">Planeación estratégica</a><a href="contexto-software.html">Contexto del software</a><a href="analisis-problema.html">Análisis del problema</a><a href="situacion-actual.html">Situación actual</a>
-</nav></header>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IPR | AS IS / TO BE</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a class="logo-block" href="home.html">
+      <span class="logo-badge">IPR</span>
+      <span class="logo-text">
+        <span class="t1">Partes y Repuestos</span>
+        <span class="t2">by Inverprimos · Desde 1993</span>
+      </span>
+    </a>
+    <nav>
+      <a href="home.html">Empresa</a>
+      <a href="planeacion-estrategica.html">Planeación</a>
+      <a href="contexto-software.html">Contexto</a>
+      <a href="analisis-problema.html">Problema</a>
+      <a href="situacion-actual.html" class="active">AS IS / TO BE</a>
+      <a href="mejoras.html">Mejoras</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow">Solución propuesta</p>
+    <h2>Proceso AS IS → TO BE</h2>
+    <p>Diagrama BPMN y descripción del proceso mejorado de logística y despacho.</p>
+  </div>
+</div>
+
 <main>
-<section><h2>Mapa de procesos totalmente implementado</h2><ol><li><strong>Captación digital:</strong> el cliente registra su solicitud en formulario web o CRM.</li><li><strong>Cotización asistida:</strong> el asesor genera propuesta con plantillas y cálculo automático.</li><li><strong>Programación técnica:</strong> agenda centralizada asigna técnico y ruta.</li><li><strong>Ejecución en campo:</strong> técnicos reportan actividades en app con checklist y evidencias.</li><li><strong>Cierre y facturación:</strong> aprobación digital, facturación automática e indicadores en tablero.</li><li><strong>Mejora continua:</strong> análisis de tiempos, satisfacción y reincidencias para optimización.</li></ol></section>
-</main><footer>© 2026 IPR - Proceso implementado.</footer></body></html>
+
+  <section>
+    <h2><span class="ico">💡</span> Planteamiento de la solución</h2>
+    <p>La solución propuesta consiste en la <strong>integración del sistema de pedidos con el inventario multi-sede y la plataforma logística</strong> de IPR, permitiendo que las decisiones operativas sean ejecutadas automáticamente por el sistema.</p>
+    <p>La diferencia clave frente a la compra actual por web: hoy la web funciona como tienda en línea, pero sin integración con el sistema logístico interno. El cliente puede hacer el pedido y pagar, pero la verificación de stock, la asignación de bodega y el seguimiento del despacho <strong>continúan siendo manuales</strong>. La solución propuesta conecta todos estos pasos en un flujo único automatizado.</p>
+  </section>
+
+  <section>
+    <h2><span class="ico">🔧</span> Componentes clave de la solución</h2>
+    <div class="grid">
+      <article class="card"><h3>🌐 Portal unificado</h3><p>Web, app y WhatsApp integrados en un solo canal de pedidos.</p></article>
+      <article class="card"><h3>📊 Stock en tiempo real</h3><p>Motor de consulta simultánea de inventario en todas las sedes.</p></article>
+      <article class="card"><h3>🏪 Bodega óptima</h3><p>Asignación automática según ubicación del cliente y disponibilidad.</p></article>
+      <article class="card"><h3>📄 Orden automática</h3><p>Generación digital de orden y guía al confirmar el pago.</p></article>
+      <article class="card"><h3>📍 Tracking activo</h3><p>Notificaciones automáticas al cliente en cada etapa del trayecto.</p></article>
+      <article class="card"><h3>⭐ Calificación</h3><p>Retroalimentación post-entrega como insumo de mejora continua.</p></article>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="ico">🗂️</span> Diagrama BPM TO BE — Carriles del proceso mejorado</h2>
+    <p style="margin-bottom:.9rem;font-size:.88rem;color:#64748b">Las actividades marcadas con ⚙ son ejecutadas por el sistema integrado sin intervención humana.</p>
+
+    <div class="lanes">
+
+      <div class="bpm">
+        <img src="diagrama-bpm.jpeg" alt="Diagrama BPMN TO BE">
+        <style>
+            .bpm img {
+                width: 100%;
+                height: auto;
+                display: block;
+                margin: 0 auto;
+            }
+        </style>
+      </div>
+  </section>
+
+</main>
+
+<footer>© 2026 IPR Partes y Repuestos by Inverprimos · Universidad de Medellín — Proyecto Procesos de Negocio</footer>
+</body>
+</html>
