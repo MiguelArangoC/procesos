@@ -1,0 +1,716 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IPR | Solución Tecnológica</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .page-solucion {
+      --bg-card: var(--white);
+      --bg-2: var(--off-white);
+      --text: var(--navy);
+      --text-2: #374151;
+      --text-3: var(--slate);
+      --border-2: #d1d9e6;
+      --blue: #185FA5;
+      --blue-light: #E6F1FB;
+      --blue-mid: #B5D4F4;
+      --amber: #854F0B;
+      --amber-light: #FAEEDA;
+      --amber-mid: #FAC775;
+      --radius-lg: var(--radius);
+    }
+    .page-solucion .section-kicker {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: .5rem;
+    }
+    .page-solucion section h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: .4rem;
+    }
+    .page-solucion section h2 + p { color: var(--slate); font-size: .9rem; margin-bottom: 1.25rem; }
+    .page-solucion .divider { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+
+    .problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0; }
+    @media (max-width: 600px) { .problem-grid { grid-template-columns: 1fr; } }
+    .problem-card {
+      padding: 1.25rem 1.375rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+    .problem-card.before { background: #fff7f4; border-top: 3px solid var(--orange); }
+    .problem-card.after { background: #f0f7ff; border-top: 3px solid #2563eb; }
+    .problem-card .tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .75rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: .6rem;
+    }
+    .problem-card.before .tag { color: var(--orange-dark); }
+    .problem-card.after .tag { color: #1d4ed8; }
+    .problem-card h3 { font-size: .9rem; font-weight: 700; margin-bottom: .4rem; line-height: 1.35; color: var(--navy); }
+    .problem-card p { font-size: .88rem; color: #374151; }
+
+    .solution-box {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--orange);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 1rem 1.25rem;
+      margin-top: 1rem;
+    }
+    .solution-box h4 { font-size: .88rem; font-weight: 700; color: var(--orange-dark); margin-bottom: .35rem; }
+    .solution-box p { font-size: .88rem; color: var(--slate); }
+
+    /* PAIN POINTS */
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
+      gap: .75rem; margin: 1rem 0;
+    }
+    .pain-card {
+      background: var(--bg-card);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: .875rem 1rem;
+    }
+    .pain-icon { font-size: 1.25rem; margin-bottom: .4rem; }
+    .pain-card h4 { font-size: 13px; font-weight: 600; margin-bottom: .2rem; }
+    .pain-card p { font-size: 12px; color: var(--text-2); line-height: 1.4; }
+
+    /* ACTORES */
+    .actores-row {
+      display: flex; flex-wrap: wrap; gap: .5rem; margin: .75rem 0;
+    }
+    .actor-chip {
+      background: var(--bg-card);
+      border: 0.5px solid var(--border-2);
+      border-radius: 999px;
+      padding: .3rem .9rem;
+      font-size: 13px; font-weight: 500; color: var(--text);
+    }
+    .actor-chip.sys {
+      background: var(--orange-light);
+      border-color: var(--orange);
+      color: var(--orange-dark);
+    }
+
+    /* HISTORIAS */
+    .release-label {
+      font-size: 11px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: .09em; margin: 1.5rem 0 .6rem;
+      display: flex; align-items: center; gap: .5rem;
+    }
+    .release-label::after {
+      content: ''; flex: 1; height: 0.5px; background: currentColor; opacity: .3;
+    }
+    .rl-r1 { color: var(--orange-dark); }
+    .rl-r2 { color: var(--blue); }
+    .rl-r3 { color: var(--amber); }
+
+    .hu-card {
+      background: var(--bg-card);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: .625rem;
+    }
+    .hu-header {
+      display: flex; align-items: center; gap: .75rem;
+      padding: .875rem 1.125rem;
+      cursor: pointer; user-select: none;
+    }
+    .hu-header:hover { background: var(--bg-2); }
+    .hu-badge {
+      font-size: 11px; font-weight: 700;
+      padding: 3px 10px; border-radius: 999px;
+      white-space: nowrap; letter-spacing: .04em;
+    }
+    .r1 .hu-badge { background: var(--orange-light); color: var(--orange-dark); }
+    .r2 .hu-badge { background: var(--blue-light); color: var(--blue); }
+    .r3 .hu-badge { background: var(--amber-light); color: var(--amber); }
+
+    .hu-title { font-size: 14px; font-weight: 500; color: var(--text); flex: 1; }
+    .hu-chevron {
+      width: 16px; height: 16px; color: var(--text-3);
+      transition: transform .2s;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .hu-card.open .hu-chevron svg { transform: rotate(180deg); }
+
+    .hu-body {
+      display: none;
+      padding: 0 1.125rem 1.125rem;
+      border-top: 0.5px solid var(--border);
+    }
+    .hu-card.open .hu-body { display: block; }
+
+    .hu-story {
+      font-size: 13px; font-style: italic; color: var(--text-2);
+      margin: .875rem 0 .5rem;
+      padding: .75rem 1rem;
+      background: var(--bg-2);
+      border-left: 2.5px solid var(--border-2);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      line-height: 1.55;
+    }
+    .hu-story strong { font-style: normal; font-weight: 600; color: var(--text); }
+
+    .hu-body h4 {
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .08em; color: var(--text-3);
+      margin: 1rem 0 .5rem;
+    }
+    .hu-criteria { list-style: none; display: flex; flex-direction: column; gap: .35rem; }
+    .hu-criteria li {
+      font-size: 13px; color: var(--text-2);
+      display: flex; align-items: flex-start; gap: .5rem; line-height: 1.5;
+    }
+    .hu-criteria li::before {
+      content: '✓'; color: var(--orange); font-weight: 700;
+      flex-shrink: 0; margin-top: 2px;
+    }
+
+    /* USM */
+    .usm-container {
+      overflow-x: auto; border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: var(--bg-card);
+    }
+    table.usm {
+      width: 100%; border-collapse: collapse; min-width: 720px;
+    }
+    .usm thead tr { background: transparent; }
+    .usm .epic-cell { padding: .5rem .4rem; vertical-align: top; }
+    .usm .epic-pill {
+      background: var(--orange);
+      color: #fff;
+      font-size: 12px; font-weight: 600;
+      text-align: center;
+      padding: .65rem .5rem;
+      border-radius: var(--radius);
+      line-height: 1.3;
+    }
+    .usm .epic-pill span { display: block; font-size: 10px; opacity: .8; font-weight: 400; margin-top: 2px; }
+
+    .usm .rl-cell {
+      width: 72px; padding: .5rem .4rem; vertical-align: middle;
+      text-align: center;
+    }
+    .rl-tag {
+      font-size: 10px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .07em; line-height: 1.4;
+      padding: .4rem .3rem;
+      border-radius: var(--radius);
+    }
+    .rl-tag.r1 { background: var(--orange-light); color: var(--orange-dark); }
+    .rl-tag.r2 { background: var(--blue-light); color: var(--blue); }
+    .rl-tag.r3 { background: var(--amber-light); color: var(--amber); }
+
+    .usm tbody tr { border-top: 0.5px solid var(--border); }
+    .usm tbody tr.r1-row { border-top: 2px solid var(--orange); }
+    .usm tbody tr.r2-row { border-top: 2px solid var(--blue); }
+    .usm tbody tr.r3-row { border-top: 2px solid #BA7517; }
+
+    .usm .story-cell { padding: .4rem; vertical-align: top; }
+
+    .usm-card {
+      font-size: 11px; font-weight: 600;
+      padding: .5rem .65rem;
+      border-radius: 7px;
+      margin-bottom: .3rem;
+      line-height: 1.3;
+      cursor: pointer;
+      transition: opacity .15s, transform .1s;
+      border: 0.5px solid transparent;
+    }
+    .usm-card:hover { opacity: .75; transform: translateY(-1px); }
+    .usm-card:last-child { margin-bottom: 0; }
+
+    .usm-card.r1 { background: var(--orange-light); color: var(--orange-dark); border-color: var(--orange); }
+    .usm-card.r2 { background: var(--blue-light); color: #0C447C; border-color: var(--blue-mid); }
+    .usm-card.r3 { background: var(--amber-light); color: #633806; border-color: var(--amber-mid); }
+
+    /* MVP BADGE */
+    .mvp-badge {
+      display: inline-flex; align-items: center; gap: .3rem;
+      background: var(--orange); color: #fff;
+      font-size: 10px; font-weight: 700; letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 2px 8px; border-radius: 999px;
+      margin-left: .5rem; vertical-align: middle;
+    }
+
+  </style>
+</head>
+<body class="page-solucion">
+
+<header>
+  <div class="header-inner">
+    <a class="logo-block" href="home.html">
+      <span class="logo-badge">IPR</span>
+      <span class="logo-text">
+        <span class="t1">Partes y Repuestos</span>
+        <span class="t2">by Inverprimos · Desde 1993</span>
+      </span>
+    </a>
+    <nav>
+      <a href="home.html">Empresa</a>
+      <a href="planeacion-estrategica.html">Planeación</a>
+      <a href="contexto-software.html">Contexto</a>
+      <a href="analisis-problema.html">Problema</a>
+      <a href="situacion-actual.html">AS IS / TO BE</a>
+      <a href="mejoras.html">Mejoras</a>
+      <a href="solucion-tecnologica.html" class="active">Solución</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow">Entregable 3 — Solución tecnológica</p>
+    <h2>Portal Logístico Integrado IPR</h2>
+    <p>Propuesta de solución, historias de usuario con criterios de aceptación y priorización por releases para el sistema de logística y despacho de IPR Partes y Repuestos.</p>
+    <div class="hero-tags">
+      <span class="hero-tag">Miguel Angel Arango</span>
+      <span class="hero-tag">Juan Camilo García Castro</span>
+      <span class="hero-tag">Universidad de Medellín</span>
+      <span class="hero-tag">Mayo 2026</span>
+    </div>
+  </div>
+</div>
+
+<main>
+
+  <!-- ==================== REFINAMIENTO ==================== -->
+  <section id="refinamiento">
+    <p class="section-kicker">01 — Refinamiento del problema</p>
+    <h2>Planteamiento refinado</h2>
+    <p>A partir del feedback de la exposición anterior, se precisa la causa raíz y se delimita el alcance de la solución tecnológica.</p>
+
+    <div class="problem-grid">
+      <div class="problem-card before">
+        <div class="tag">⚠ Versión anterior — vaga</div>
+        <h3>"La empresa tiene dificultades para atender a sus clientes a nivel nacional"</h3>
+        <p>Sin delimitación de proceso, sin actor específico y sin causa raíz identificada. No es accionable como requerimiento de sistema.</p>
+      </div>
+      <div class="problem-card after">
+        <div class="tag">✓ Versión refinada — específica</div>
+        <h3>Ausencia de integración entre el canal de pedidos, el inventario multi-sede y el seguimiento de despacho</h3>
+        <p>Los tres canales (web, WhatsApp, teléfono) operan en silos. El asesor intermedia cada pedido manualmente generando demoras, reprocesos y cero visibilidad para el cliente técnico.</p>
+      </div>
+    </div>
+
+    <div class="solution-box">
+      <h4>Solución tecnológica propuesta</h4>
+      <p>Un <strong>portal logístico integrado</strong> que conecta el canal de pedidos con el inventario en tiempo real y automatiza la generación de órdenes, asignación de bodega óptima y notificaciones al cliente. El asesor solo interviene en pedidos especiales (crédito, volumen alto, precio negociado).</p>
+    </div>
+
+    <div style="margin-top:1.5rem;">
+      <h3 style="font-size:14px;font-weight:600;margin-bottom:.6rem;color:var(--text)">Actores del sistema TO BE</h3>
+      <div class="actores-row">
+        <span class="actor-chip">👨‍🔧 Cliente técnico / distribuidor</span>
+        <span class="actor-chip sys">⚙️ Plataforma integrada (sistema)</span>
+        <span class="actor-chip">📦 Personal de bodega</span>
+        <span class="actor-chip">🚚 Transportador</span>
+        <span class="actor-chip">💼 Asesor comercial (casos especiales)</span>
+        <span class="actor-chip">📊 Coordinador logístico</span>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ==================== PAIN POINTS ==================== -->
+  <section id="pain">
+    <p class="section-kicker">02 — Diagnóstico</p>
+    <h2>Puntos de dolor que resuelve la solución</h2>
+    <p>Cada historia de usuario atiende directamente uno o más de estos puntos identificados en el proceso AS IS.</p>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="pain-icon">📵</div>
+        <h4>Canales en silos</h4>
+        <p>Web, WhatsApp y teléfono sin vista unificada del pedido</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">🗃️</div>
+        <h4>Inventario manual</h4>
+        <p>Consulta secuencial sede por sede sin tiempo real</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">📝</div>
+        <h4>Órdenes en papel</h4>
+        <p>Generación manual, propensa a errores y sin trazabilidad</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">📭</div>
+        <h4>Sin tracking</h4>
+        <p>El cliente llama para saber el estado de su envío</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">🔄</div>
+        <h4>Novedades sin flujo</h4>
+        <p>Reprocesos manuales sin excepción definida ni trazabilidad</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">👤</div>
+        <h4>Asesor en todo</h4>
+        <p>Interviene en pedidos estándar que el sistema puede resolver</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ==================== HISTORIAS ==================== -->
+  <section id="historias">
+    <p class="section-kicker">03 — Historias de usuario</p>
+    <h2>Historias de usuario y criterios de aceptación</h2>
+    <p>Haz clic en cada historia para expandir los criterios de aceptación.</p>
+
+    <!-- RELEASE 1 -->
+    <div class="release-label rl-r1">
+      Release 1 — MVP: canal unificado + stock en tiempo real
+      <span class="mvp-badge">MVP</span>
+    </div>
+
+    <div class="hu-card r1" onclick="toggleHU(this)">
+      <div class="hu-header">
+        <span class="hu-badge">HU-01</span>
+        <span class="hu-title">Realizar pedido desde portal unificado</span>
+        <span class="hu-chevron"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 4.5L7 9L11.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </div>
+      <div class="hu-body">
+        <div class="hu-story">
+          "Como <strong>técnico de refrigeración</strong>, necesito realizar mi pedido desde la plataforma web (o WhatsApp integrado) sin hablar con un asesor, <strong>para que</strong> pueda comprar en cualquier momento sin depender del horario comercial."
+        </div>
+        <h4>Criterios de aceptación</h4>
+        <ul class="hu-criteria">
+          <li>El cliente puede buscar repuestos por código, nombre o categoría desde la plataforma.</li>
+          <li>El sistema muestra disponibilidad en tiempo real por la sede más cercana a la ciudad del cliente.</li>
+          <li>El cliente puede agregar ítems al carrito y confirmar el pedido sin intervención humana.</li>
+          <li>El pedido queda registrado en el sistema con número de referencia único visible para el cliente.</li>
+          <li>El flujo completo funciona en dispositivos móviles (diseño responsive).</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="hu-card r1" onclick="toggleHU(this)">
+      <div class="hu-header">
+        <span class="hu-badge">HU-02</span>
+        <span class="hu-title">Consultar inventario multi-sede en tiempo real</span>
+        <span class="hu-chevron"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 4.5L7 9L11.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </div>
+      <div class="hu-body">
+        <div class="hu-story">
+          "Como <strong>técnico de refrigeración</strong>, necesito saber si el repuesto que busco está disponible —y en qué ciudad— <strong>para que</strong> pueda planificar mi compra sin llamar al asesor ni esperar respuesta por WhatsApp."
+        </div>
+        <h4>Criterios de aceptación</h4>
+        <ul class="hu-criteria">
+          <li>La consulta de stock refleja el inventario actual de todas las sedes simultáneamente.</li>
+          <li>El sistema indica cantidad disponible por sede (Medellín, Bogotá, Cali, y demás ciudades).</li>
+          <li>Si el ítem no está en la ciudad del cliente, el sistema sugiere la sede más cercana con stock.</li>
+          <li>La información se actualiza sin necesidad de recargar la página (tiempo real).</li>
+          <li>El tiempo de respuesta de la consulta es inferior a 3 segundos.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="hu-card r1" onclick="toggleHU(this)">
+      <div class="hu-header">
+        <span class="hu-badge">HU-03</span>
+        <span class="hu-title">Generar orden de despacho automática al confirmar pago</span>
+        <span class="hu-chevron"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 4.5L7 9L11.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </div>
+      <div class="hu-body">
+        <div class="hu-story">
+          "Como <strong>personal de bodega</strong>, necesito recibir la orden de despacho digital tan pronto el cliente confirma el pago, <strong>para que</strong> pueda iniciar el alistamiento sin esperar que el asesor me entregue un papel."
+        </div>
+        <h4>Criterios de aceptación</h4>
+        <ul class="hu-criteria">
+          <li>Al confirmarse el pago, el sistema genera automáticamente la orden de despacho en formato digital.</li>
+          <li>La orden llega a la interfaz de bodega con todos los datos: ítems, cantidades, sede de origen y destino del cliente.</li>
+          <li>La orden incluye modalidad de entrega (domicilio o retiro en sede) y dirección cuando aplica.</li>
+          <li>Bodega puede marcar la orden como "en alistamiento" y "listo para despacho" desde el sistema.</li>
+          <li>No se requiere ninguna acción manual del asesor para pedidos de pago anticipado estándar.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- RELEASE 2 -->
+    <div class="release-label rl-r2">Release 2 — Trazabilidad y notificaciones proactivas</div>
+
+    <div class="hu-card r2" onclick="toggleHU(this)">
+      <div class="hu-header">
+        <span class="hu-badge">HU-04</span>
+        <span class="hu-title">Recibir notificaciones automáticas del estado del pedido</span>
+        <span class="hu-chevron"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 4.5L7 9L11.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </div>
+      <div class="hu-body">
+        <div class="hu-story">
+          "Como <strong>cliente técnico</strong>, necesito recibir actualizaciones automáticas del estado de mi pedido por WhatsApp o correo, <strong>para que</strong> no tenga que llamar al asesor para saber dónde está mi entrega."
+        </div>
+        <h4>Criterios de aceptación</h4>
+        <ul class="hu-criteria">
+          <li>El sistema envía notificación al confirmar el pedido, al iniciar alistamiento, al despachar y al entregar.</li>
+          <li>El cliente elige canal de notificación: WhatsApp, correo electrónico o ambos.</li>
+          <li>Cada notificación incluye número de pedido, estado actual y tiempo estimado de entrega.</li>
+          <li>El cliente puede ver el historial de estados desde un enlace incluido en la notificación.</li>
+          <li>Las notificaciones se envían en menos de 2 minutos después de cada cambio de estado.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="hu-card r2" onclick="toggleHU(this)">
+      <div class="hu-header">
+        <span class="hu-badge">HU-05</span>
+        <span class="hu-title">Asignación automática de bodega óptima de origen</span>
+        <span class="hu-chevron"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 4.5L7 9L11.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </div>
+      <div class="hu-body">
+        <div class="hu-story">
+          "Como <strong>plataforma integrada</strong>, necesito asignar automáticamente la bodega de origen según la ubicación del cliente y el stock disponible, <strong>para que</strong> el asesor no tenga que decidir manualmente qué sede despacha."
+        </div>
+        <h4>Criterios de aceptación</h4>
+        <ul class="hu-criteria">
+          <li>El sistema evalúa todas las sedes con stock disponible del ítem solicitado.</li>
+          <li>Asigna la bodega más cercana a la ciudad de destino del cliente.</li>
+          <li>En caso de empate por distancia, prioriza la sede con mayor cantidad de stock.</li>
+          <li>La asignación se ejecuta automáticamente al confirmar el pedido, sin intervención humana.</li>
+          <li>Si ninguna sede tiene stock completo, el sistema alerta al asesor para gestión especial.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="hu-card r2" onclick="toggleHU(this)">
+      <div class="hu-header">
+        <span class="hu-badge">HU-06</span>
+        <span class="hu-title">Registrar y gestionar novedades post-despacho</span>
+        <span class="hu-chevron"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 4.5L7 9L11.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </div>
+      <div class="hu-body">
+        <div class="hu-story">
+          "Como <strong>asesor comercial</strong>, necesito que las novedades (daños, faltantes, dirección incorrecta) se registren en el sistema con un flujo definido, <strong>para que</strong> pueda darles trazabilidad y resolución sin depender de mensajes por WhatsApp."
+        </div>
+        <h4>Criterios de aceptación</h4>
+        <ul class="hu-criteria">
+          <li>El transportador puede registrar novedades indicando tipo (daño, faltante, dirección) y descripción.</li>
+          <li>Cada novedad queda vinculada al pedido y genera alerta automática al asesor responsable.</li>
+          <li>El sistema ofrece opciones de resolución: reenvío, reembolso o contacto directo con el cliente.</li>
+          <li>El cliente recibe notificación automática cuando se registra una novedad en su pedido.</li>
+          <li>Todas las novedades quedan trazadas con fecha, tipo, responsable y estado de resolución.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- RELEASE 3 -->
+    <div class="release-label rl-r3">Release 3 — Experiencia avanzada y analítica operacional</div>
+
+    <div class="hu-card r3" onclick="toggleHU(this)">
+      <div class="hu-header">
+        <span class="hu-badge">HU-07</span>
+        <span class="hu-title">Calificar el servicio post-entrega</span>
+        <span class="hu-chevron"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 4.5L7 9L11.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </div>
+      <div class="hu-body">
+        <div class="hu-story">
+          "Como <strong>cliente técnico</strong>, necesito poder calificar la experiencia de entrega una vez recibo mi pedido, <strong>para que</strong> IPR pueda mejorar continuamente su servicio con base en retroalimentación real."
+        </div>
+        <h4>Criterios de aceptación</h4>
+        <ul class="hu-criteria">
+          <li>El sistema envía mensaje de calificación al cliente 1 hora después de marcada la entrega.</li>
+          <li>La calificación es de 1 a 5 estrellas con campo de comentario opcional.</li>
+          <li>Las respuestas quedan registradas y vinculadas al pedido correspondiente.</li>
+          <li>El coordinador comercial puede ver un dashboard con promedio de calificaciones por periodo y ciudad.</li>
+          <li>Calificaciones de 1 o 2 estrellas generan alerta automática al asesor para seguimiento inmediato.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="hu-card r3" onclick="toggleHU(this)">
+      <div class="hu-header">
+        <span class="hu-badge">HU-08</span>
+        <span class="hu-title">Gestionar pedidos especiales con intervención comercial</span>
+        <span class="hu-chevron"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 4.5L7 9L11.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </div>
+      <div class="hu-body">
+        <div class="hu-story">
+          "Como <strong>asesor comercial</strong>, necesito que el sistema me notifique únicamente los pedidos que requieren mi atención (crédito, gran volumen o precio negociado), <strong>para que</strong> pueda enfocarme en relaciones estratégicas sin saturarme con pedidos estándar."
+        </div>
+        <h4>Criterios de aceptación</h4>
+        <ul class="hu-criteria">
+          <li>El sistema identifica automáticamente pedidos que superan el límite de crédito registrado del cliente.</li>
+          <li>Pedidos con precio negociado y registrado previamente no requieren aprobación manual adicional.</li>
+          <li>El asesor recibe notificación priorizada para pedidos de gran volumen (umbral definible en configuración).</li>
+          <li>El asesor puede aprobar, modificar o rechazar el pedido especial desde la plataforma.</li>
+          <li>El cliente recibe notificación del estado de su pedido especial en cada etapa del proceso.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="hu-card r3" onclick="toggleHU(this)">
+      <div class="hu-header">
+        <span class="hu-badge">HU-09</span>
+        <span class="hu-title">Consultar historial de pedidos y analítica operacional</span>
+        <span class="hu-chevron"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 4.5L7 9L11.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </div>
+      <div class="hu-body">
+        <div class="hu-story">
+          "Como <strong>coordinador logístico</strong>, necesito acceder al historial completo de pedidos con sus estados y tiempos por etapa, <strong>para que</strong> pueda identificar cuellos de botella y tomar decisiones de mejora con datos reales."
+        </div>
+        <h4>Criterios de aceptación</h4>
+        <ul class="hu-criteria">
+          <li>El sistema registra timestamp de cada cambio de estado en todos los pedidos.</li>
+          <li>Se puede filtrar por sede, ciudad de destino, periodo de tiempo y estado del pedido.</li>
+          <li>El dashboard muestra tiempo promedio por etapa: alistamiento, despacho y entrega.</li>
+          <li>Se puede exportar el historial en formato Excel (.xlsx) o CSV.</li>
+          <li>Los datos están disponibles en tiempo real, sin necesidad de cierres o sincronizaciones manuales.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ==================== STORY MAPPING ==================== -->
+  <section id="usm">
+    <p class="section-kicker">04 — Visual Story Mapping</p>
+    <h2>Mapa de historias de usuario</h2>
+    <p>Las épicas se organizan horizontalmente siguiendo el flujo del proceso (de izquierda a derecha). Las historias se priorizan verticalmente: Release 1 (MVP) arriba, releases posteriores abajo. Haz clic en una historia para ver sus criterios de aceptación.</p>
+
+    <div class="usm-container" style="margin-top:1.25rem">
+      <table class="usm">
+        <thead>
+          <tr>
+            <td style="width:72px;padding:.5rem .4rem;border:none"></td>
+            <td class="epic-cell" colspan="2">
+              <div class="epic-pill">🛒 Realizar pedido <span>Canal unificado</span></div>
+            </td>
+            <td class="epic-cell" colspan="2">
+              <div class="epic-pill">🗄️ Gestionar inventario <span>Stock multi-sede</span></div>
+            </td>
+            <td class="epic-cell" colspan="2">
+              <div class="epic-pill">🚚 Despacho y entrega <span>Automatización</span></div>
+            </td>
+            <td class="epic-cell" colspan="2">
+              <div class="epic-pill">📊 Seguimiento y mejora <span>Trazabilidad</span></div>
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- RELEASE 1 -->
+          <tr class="r1-row">
+            <td class="rl-cell">
+              <div class="rl-tag r1">R1<br>MVP</div>
+            </td>
+            <td class="story-cell">
+              <div class="usm-card r1" onclick="jumpTo('HU-01')">HU-01 · Pedido desde portal unificado</div>
+              <div class="usm-card r1" onclick="jumpTo('HU-01')">Búsqueda por código / nombre</div>
+            </td>
+            <td class="story-cell">
+              <div class="usm-card r1" onclick="jumpTo('HU-01')">Carrito y confirmación sin asesor</div>
+            </td>
+            <td class="story-cell">
+              <div class="usm-card r1" onclick="jumpTo('HU-02')">HU-02 · Stock en tiempo real</div>
+            </td>
+            <td class="story-cell">
+              <div class="usm-card r1" onclick="jumpTo('HU-02')">Consulta simultánea multi-sede</div>
+            </td>
+            <td class="story-cell">
+              <div class="usm-card r1" onclick="jumpTo('HU-03')">HU-03 · Orden automática al pagar</div>
+            </td>
+            <td class="story-cell">
+              <div class="usm-card r1" onclick="jumpTo('HU-03')">Interfaz de bodega en tiempo real</div>
+            </td>
+            <td class="story-cell"></td>
+            <td class="story-cell"></td>
+          </tr>
+          <!-- RELEASE 2 -->
+          <tr class="r2-row">
+            <td class="rl-cell">
+              <div class="rl-tag r2">R2<br>Traz.</div>
+            </td>
+            <td class="story-cell">
+              <div class="usm-card r2" onclick="jumpTo('HU-08')">HU-08 · Pedidos especiales</div>
+            </td>
+            <td class="story-cell"></td>
+            <td class="story-cell">
+              <div class="usm-card r2" onclick="jumpTo('HU-05')">HU-05 · Bodega óptima automática</div>
+            </td>
+            <td class="story-cell"></td>
+            <td class="story-cell">
+              <div class="usm-card r2" onclick="jumpTo('HU-06')">HU-06 · Novedades post-despacho</div>
+            </td>
+            <td class="story-cell"></td>
+            <td class="story-cell">
+              <div class="usm-card r2" onclick="jumpTo('HU-04')">HU-04 · Notificaciones automáticas</div>
+            </td>
+            <td class="story-cell"></td>
+          </tr>
+          <!-- RELEASE 3 -->
+          <tr class="r3-row">
+            <td class="rl-cell">
+              <div class="rl-tag r3">R3<br>Anal.</div>
+            </td>
+            <td class="story-cell"></td>
+            <td class="story-cell"></td>
+            <td class="story-cell"></td>
+            <td class="story-cell"></td>
+            <td class="story-cell"></td>
+            <td class="story-cell"></td>
+            <td class="story-cell">
+              <div class="usm-card r3" onclick="jumpTo('HU-07')">HU-07 · Calificación post-entrega</div>
+            </td>
+            <td class="story-cell">
+              <div class="usm-card r3" onclick="jumpTo('HU-09')">HU-09 · Historial y analítica</div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p style="font-size:12px;color:var(--text-3);margin-top:.75rem">
+      Leyenda: <span style="display:inline-flex;align-items:center;gap:.3rem;margin-right:.75rem"><span style="width:10px;height:10px;background:var(--green);border-radius:2px;display:inline-block"></span> Release 1 — MVP</span>
+      <span style="display:inline-flex;align-items:center;gap:.3rem;margin-right:.75rem"><span style="width:10px;height:10px;background:#185FA5;border-radius:2px;display:inline-block"></span> Release 2 — Trazabilidad</span>
+      <span style="display:inline-flex;align-items:center;gap:.3rem"><span style="width:10px;height:10px;background:#BA7517;border-radius:2px;display:inline-block"></span> Release 3 — Analítica</span>
+    </p>
+  </section>
+
+</main>
+
+<footer>© 2026 IPR Partes y Repuestos by Inverprimos · Universidad de Medellín — Proyecto Procesos de Negocio</footer>
+
+<script>
+  function toggleHU(card) {
+    card.classList.toggle('open');
+  }
+
+  function jumpTo(id) {
+    const cards = document.querySelectorAll('.hu-card');
+    for (const card of cards) {
+      const badge = card.querySelector('.hu-badge');
+      if (badge && badge.textContent.trim() === id) {
+        card.classList.add('open');
+        setTimeout(() => {
+          card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 50);
+        return;
+      }
+    }
+  }
+</script>
+
+</body>
+</html>

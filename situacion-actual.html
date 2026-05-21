@@ -23,6 +23,7 @@
       <a href="analisis-problema.html">Problema</a>
       <a href="situacion-actual.html" class="active">AS IS / TO BE</a>
       <a href="mejoras.html">Mejoras</a>
+      <a href="solucion-tecnologica.html">Solución</a>
     </nav>
   </div>
 </header>
@@ -55,23 +56,64 @@
     </div>
   </section>
 
+  <section id="modelo-tobe">
+    <div class="model-card model-card--tobe">
+      <div class="model-header">
+        <span class="model-icon">✅</span>
+        <h3>Modelo verbal del proceso TO BE</h3>
+      </div>
+      <p class="model-intro">
+        Descripción del proceso mejorado con la solución tecnológica integrada:
+      </p>
+      <div class="model-prose">
+        <p>
+          En el proceso optimizado, el cliente accede a un <strong>portal unificado</strong> —disponible
+          en web y con integración directa a WhatsApp— desde el cual puede buscar repuestos por código,
+          nombre o categoría y consultar disponibilidad en tiempo real sobre todas las sedes del país de
+          forma simultánea. Si el producto no está disponible en la ciudad más cercana, el sistema lo
+          indica de inmediato y sugiere la sede con stock disponible, eliminando por completo la necesidad
+          de que el cliente espere una respuesta del asesor.
+        </p>
+        <p>
+          Al agregar los productos al carrito y confirmar el pedido, el sistema verifica el inventario y
+          asigna automáticamente la <strong>bodega de origen óptima</strong> según la ubicación del cliente
+          y la disponibilidad de stock, priorizando la sede más cercana. Pedidos estándar de pago anticipado
+          no requieren ninguna intervención del asesor comercial; el sistema reconoce el historial del cliente
+          y procesa el pedido de forma autónoma.
+        </p>
+        <p>
+          Una vez confirmado el pago, la <strong>orden de despacho digital</strong> se genera de forma
+          automática y llega de inmediato a la interfaz del personal de bodega con todos los datos necesarios:
+          ítems, cantidades, sede de origen, modalidad de entrega y dirección del cliente cuando aplica.
+          El equipo de bodega gestiona el alistamiento desde el sistema, actualizando el estado del pedido
+          en cada etapa sin necesidad de comunicaciones manuales con el área comercial.
+        </p>
+        <p>
+          Durante el trayecto, el cliente recibe <strong>notificaciones automáticas</strong> en cada cambio
+          de estado —pedido confirmado, en alistamiento, despachado, en camino y entregado— a través del
+          canal de su preferencia: WhatsApp, correo electrónico o ambos. Ante cualquier novedad durante
+          el transporte, el transportador la registra directamente en el sistema indicando tipo y descripción,
+          lo que activa un flujo de excepción definido: el asesor recibe una alerta, el cliente es notificado,
+          y el sistema ofrece opciones de resolución (reenvío, reembolso o contacto directo), dejando
+          trazabilidad completa de cada caso.
+        </p>
+        <p>
+          El proceso cierra con una <strong>solicitud de calificación</strong> que el sistema envía al cliente
+          una hora después de registrada la entrega. Esta retroalimentación queda vinculada al pedido y
+          alimenta un panel de analítica operacional que permite al coordinador logístico identificar
+          cuellos de botella por etapa, sede y ciudad, convirtiendo cada entrega en un insumo de mejora
+          continua para la operación.
+        </p>
+      </div>
+    </div>
+  </section>
+
   <section>
     <h2><span class="ico">🗂️</span> Diagrama BPM TO BE — Carriles del proceso mejorado</h2>
-    <p style="margin-bottom:.9rem;font-size:.88rem;color:#64748b">Las actividades marcadas con ⚙ son ejecutadas por el sistema integrado sin intervención humana.</p>
-
-    <div class="lanes">
-
-      <div class="bpm">
-        <img src="diagrama-bpm.jpeg" alt="Diagrama BPMN TO BE">
-        <style>
-            .bpm img {
-                width: 100%;
-                height: auto;
-                display: block;
-                margin: 0 auto;
-            }
-        </style>
-      </div>
+    <p style="margin-bottom:.9rem;font-size:.88rem;color:var(--slate)">Las actividades marcadas con ⚙ son ejecutadas por el sistema integrado sin intervención humana.</p>
+    <div class="bpm">
+      <img src="diagrama-bpm.jpeg" alt="Diagrama BPMN TO BE">
+    </div>
   </section>
 
 </main>

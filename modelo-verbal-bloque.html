@@ -1,0 +1,204 @@
+<!--
+  ============================================================
+  INSTRUCCIONES
+  ============================================================
+  1. Abre analisis-problema.html en tu editor.
+  2. Busca la sección del "Modelo verbal del proceso AS IS"
+     (la que tiene los 5 pasos numerados) y reemplázala
+     completa con el bloque AS IS de abajo.
+  3. Justo después de esa sección, pega el bloque TO BE.
+  4. Guarda y sube a Vercel.
+  ============================================================
+-->
+
+<!-- ==================== AS IS ==================== -->
+<section id="modelo-asis">
+
+  <div class="model-card">
+
+    <div class="model-header">
+      <span class="model-icon">📋</span>
+      <h3>Modelo verbal del proceso AS IS</h3>
+    </div>
+
+    <p class="model-intro">
+      Descripción del proceso de logística y despacho tal como ocurre actualmente en IPR Partes y Repuestos:
+    </p>
+
+    <div class="model-prose">
+
+      <p>
+        El proceso inicia cuando el cliente —técnico de refrigeración, instalador o distribuidor— genera
+        un pedido a través de uno de tres canales independientes entre sí: la página web de la empresa,
+        WhatsApp al asesor comercial, o la línea telefónica. En ninguno de estos canales existe integración
+        con el sistema logístico interno, lo que implica que cada solicitud debe ser gestionada de forma
+        separada y manual desde el inicio.
+      </p>
+
+      <p>
+        Una vez recibido el pedido, el asesor comercial lo registra manualmente en el sistema interno y
+        procede a verificar disponibilidad en la bodega de la ciudad más cercana al cliente. Si no hay
+        stock suficiente en esa sede, debe contactar otras bodegas de manera secuencial, lo que genera
+        demoras considerables y comunicaciones adicionales entre sedes antes de poder dar una respuesta
+        al cliente.
+      </p>
+
+      <p>
+        Al confirmarse la disponibilidad, el asesor informa al cliente el costo total, la condición de
+        entrega (domicilio gratuito o retiro en bodega) y el tiempo estimado de despacho. El cliente
+        entonces confirma el pedido y realiza el pago, ya sea de forma anticipada o contra entrega,
+        dependiendo de su historial crediticio con la empresa.
+      </p>
+
+      <p>
+        Con el pago confirmado, el asesor genera manualmente la orden de despacho —generalmente en papel
+        o en una planilla— y la entrega al personal de bodega. El equipo de bodega ubica los productos,
+        los empaca y los entrega al transportador correspondiente: mensajería propia para despachos en
+        Medellín, y servicios tercerizados para envíos a otras ciudades del país.
+      </p>
+
+      <p>
+        El seguimiento post-despacho es completamente <strong>reactivo</strong>: el cliente debe llamar
+        por iniciativa propia para conocer el estado de su pedido, pues no existe ningún sistema
+        automatizado de notificaciones. Las novedades que puedan surgir durante el trayecto —daños en
+        los productos, faltantes o direcciones incorrectas— se gestionan de forma manual y sin un flujo
+        de excepción definido, lo que genera reprocesos sin trazabilidad y una experiencia de servicio
+        inconsistente para el cliente.
+      </p>
+
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ==================== TO BE ==================== -->
+<section id="modelo-tobe" style="margin-top: 2rem;">
+
+  <div class="model-card model-card--tobe">
+
+    <div class="model-header">
+      <span class="model-icon">✅</span>
+      <h3>Modelo verbal del proceso TO BE</h3>
+    </div>
+
+    <p class="model-intro">
+      Descripción del proceso mejorado con la solución tecnológica integrada:
+    </p>
+
+    <div class="model-prose">
+
+      <p>
+        En el proceso optimizado, el cliente accede a un <strong>portal unificado</strong> —disponible
+        en web y con integración directa a WhatsApp— desde el cual puede buscar repuestos por código,
+        nombre o categoría y consultar disponibilidad en tiempo real sobre todas las sedes del país de
+        forma simultánea. Si el producto no está disponible en la ciudad más cercana, el sistema lo
+        indica de inmediato y sugiere la sede con stock disponible, eliminando por completo la necesidad
+        de que el cliente espere una respuesta del asesor.
+      </p>
+
+      <p>
+        Al agregar los productos al carrito y confirmar el pedido, el sistema verifica el inventario y
+        asigna automáticamente la <strong>bodega de origen óptima</strong> según la ubicación del cliente
+        y la disponibilidad de stock, priorizando la sede más cercana. Pedidos estándar de pago anticipado
+        no requieren ninguna intervención del asesor comercial; el sistema reconoce el historial del cliente
+        y procesa el pedido de forma autónoma.
+      </p>
+
+      <p>
+        Una vez confirmado el pago, la <strong>orden de despacho digital</strong> se genera de forma
+        automática y llega de inmediato a la interfaz del personal de bodega con todos los datos necesarios:
+        ítems, cantidades, sede de origen, modalidad de entrega y dirección del cliente cuando aplica.
+        El equipo de bodega gestiona el alistamiento desde el sistema, actualizando el estado del pedido
+        en cada etapa sin necesidad de comunicaciones manuales con el área comercial.
+      </p>
+
+      <p>
+        Durante el trayecto, el cliente recibe <strong>notificaciones automáticas</strong> en cada cambio
+        de estado —pedido confirmado, en alistamiento, despachado, en camino y entregado— a través del
+        canal de su preferencia: WhatsApp, correo electrónico o ambos. Ante cualquier novedad durante
+        el transporte, el transportador la registra directamente en el sistema indicando tipo y descripción,
+        lo que activa un flujo de excepción definido: el asesor recibe una alerta, el cliente es notificado,
+        y el sistema ofrece opciones de resolución (reenvío, reembolso o contacto directo), dejando
+        trazabilidad completa de cada caso.
+      </p>
+
+      <p>
+        El proceso cierra con una <strong>solicitud de calificación</strong> que el sistema envía al cliente
+        una hora después de registrada la entrega. Esta retroalimentación queda vinculada al pedido y
+        alimenta un panel de analítica operacional que permite al coordinador logístico identificar
+        cuellos de botella por etapa, sede y ciudad, convirtiendo cada entrega en un insumo de mejora
+        continua para la operación.
+      </p>
+
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ==================== ESTILOS ==================== -->
+<!--
+  Pega estos estilos dentro del <style> que ya existe en tu página,
+  o en el <head> si prefieres un bloque aparte.
+-->
+<style>
+  .model-card {
+    background: #fff;
+    border: 0.5px solid rgba(0,0,0,.1);
+    border-radius: 14px;
+    padding: 1.5rem 1.75rem;
+    margin-top: 1rem;
+  }
+
+  .model-card--tobe {
+    border-left: 3px solid #1D9E75;
+  }
+
+  .model-header {
+    display: flex;
+    align-items: center;
+    gap: .625rem;
+    margin-bottom: .75rem;
+    padding-bottom: .75rem;
+    border-bottom: 0.5px solid rgba(0,0,0,.08);
+  }
+
+  .model-icon {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .model-header h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1a1a18;
+    margin: 0;
+  }
+
+  .model-intro {
+    font-size: 13px;
+    color: #888780;
+    margin-bottom: 1rem;
+  }
+
+  .model-prose p {
+    font-size: 14px;
+    color: #3a3a36;
+    line-height: 1.75;
+    margin-bottom: 1rem;
+  }
+
+  .model-prose p:last-child {
+    margin-bottom: 0;
+  }
+
+  .model-prose strong {
+    color: #1a1a18;
+    font-weight: 600;
+  }
+
+  .model-card--tobe .model-prose strong {
+    color: #0F6E56;
+  }
+</style>
