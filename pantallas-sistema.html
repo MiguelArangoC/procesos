@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IPR | Pantallas del Sistema</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .page-pantallas { --green:#1D9E75; --green-dark:#0F6E56; --green-light:#E1F5EE; --green-mid:#9FE1CB; --blue:#185FA5; --blue-light:#E6F1FB; --blue-mid:#B5D4F4; --amber:#854F0B; --amber-light:#FAEEDA; --red-light:#FCEBEB; --red-border:#F7C1C1; --red-text:#791F1F; --text:#1a1a18; --text-2:#4a4a46; --text-3:#888780; --border:rgba(0,0,0,.1); --border-2:rgba(0,0,0,.18); --bg-2:#f2f0e8; --bg-card:#fff; --radius:10px; --radius-lg:14px; }
+    .page-pantallas .hero{background:linear-gradient(135deg,#0F6E56 0%,#1D9E75 60%,#5DCAA5 100%)}
+    .page-pantallas .hero .eyebrow{color:#d6fff0}
+    .pantallas-wrap{max-width:860px;margin:0 auto;padding:2.5rem 1.5rem 4rem}
+    .screen-section{margin-bottom:3rem}.divider{border:none;border-top:1px solid var(--border);margin:2rem 0}
+    .screen-kicker,.how-title{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3)}
+    .screen-title{font-size:1.15rem;font-weight:700;color:var(--text);margin:.2rem 0}.screen-who,.hu-link,.badge{font-size:12px}
+    .screen-who{display:inline-flex;gap:.35rem;background:var(--green-light);border:1px solid var(--green-mid);padding:2px 10px;border-radius:999px;color:var(--green-dark);margin:.6rem 0}
+    .screen-desc{font-size:14px;color:var(--text-2);line-height:1.7;margin:1rem 0}.how-list{list-style:none;display:flex;flex-direction:column;gap:.35rem;margin:.6rem 0 1.2rem}
+    .how-list li{font-size:13px;color:var(--text-2);display:flex;gap:.5rem}.how-list li::before{content:'→';color:var(--green);font-weight:700}
+    .hu-link{display:inline-flex;gap:.35rem;color:var(--blue);background:var(--blue-light);border:1px solid var(--blue-mid);padding:2px 10px;border-radius:999px}
+    .intro-card,.device-frame,.mock-window{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg)}
+    .intro-card{padding:1.25rem 1.5rem;margin-bottom:2.5rem}.intro-card p{font-size:14px;color:var(--text-2)}
+    .flow-chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}.chip{font-size:12px;padding:4px 12px;border-radius:999px;border:1px solid var(--border)}.chip.new{background:var(--green-light);color:var(--green-dark)}
+    .device-frame{background:var(--bg-2);padding:1.25rem;margin-top:1.25rem}.mock-window{overflow:hidden;font-size:13px}
+    .mock-topbar{border-bottom:1px solid var(--border);padding:10px 14px;display:flex;justify-content:space-between}.mock-body{padding:14px}
+    .badge{padding:2px 9px;border-radius:999px}.badge-green{background:var(--green-light);color:var(--green-dark)}.badge-blue{background:var(--blue-light);color:var(--blue)}.badge-amber{background:var(--amber-light);color:var(--amber)}.badge-red{background:var(--red-light);color:var(--red-text)}.badge-gray{background:var(--bg-2);color:var(--text-3)}
+  </style>
+</head>
+<body class="page-pantallas">
+<header><div class="header-inner"><a class="logo-block" href="home.html"><span class="logo-badge">IPR</span><span class="logo-text"><span class="t1">Partes y Repuestos</span><span class="t2">by Inverprimos · Desde 1993</span></span></a><nav><a href="home.html">Empresa</a><a href="planeacion-estrategica.html">Planeación</a><a href="contexto-software.html">Contexto</a><a href="analisis-problema.html">Problema</a><a href="situacion-actual.html">AS IS / TO BE</a><a href="mejoras.html">Mejoras</a><a href="solucion-tecnologica.html">Solución</a><a href="pantallas-sistema.html" class="active">Pantallas</a></nav></div></header>
+<div class="hero"><div class="hero-inner"><p class="eyebrow">Entregable 3 — Diseño de interfaces</p><h2>Pantallas del sistema propuesto</h2><p>Wireframes y descripción de funcionamiento de las 5 pantallas nuevas que se integran al flujo existente de catálogo, carrito y pago de IPR.</p></div></div>
+<main class="pantallas-wrap">
+<div class="intro-card"><p>El flujo de compra actual (catálogo → carrito → pago) ya existe en la página web de IPR y <strong>no se modifica</strong>. Las pantallas descritas a continuación son las <strong>5 nuevas interfaces</strong> que se activan a partir del momento en que el cliente confirma el pago.</p></div>
+<div class="screen-section"><div class="screen-kicker">Pantalla 01 · Cliente</div><h2 class="screen-title">Confirmación y estado del pedido en tiempo real</h2><div class="screen-who">👨‍🔧 Actor: Cliente técnico / distribuidor</div><p class="screen-desc">Se muestra el seguimiento en tiempo real del pedido y la bodega asignada, reemplazando el mensaje genérico de espera.</p><span class="hu-link">↗ HU-01 · HU-02 · HU-04</span></div>
+<hr class="divider"><div class="screen-section"><div class="screen-kicker">Pantalla 02 · Operaciones internas</div><h2 class="screen-title">Panel de órdenes de despacho — Bodega</h2><div class="screen-who">📦 Actor: Personal de bodega</div><p class="screen-desc">La orden llega automáticamente a bodega al confirmar pago, sin papel ni gestión manual del asesor.</p><span class="hu-link">↗ HU-03 · HU-05</span></div>
+<hr class="divider"><div class="screen-section"><div class="screen-kicker">Pantalla 03 · Transportador / Asesor</div><h2 class="screen-title">Registro y gestión de novedades post-despacho</h2><div class="screen-who">🚚 Actor: Transportador → 💼 Asesor comercial</div><p class="screen-desc">El transportador registra novedades y el asesor recibe alertas para resolver excepciones desde el sistema.</p><span class="hu-link">↗ HU-06</span></div>
+<hr class="divider"><div class="screen-section"><div class="screen-kicker">Pantalla 04 · Asesor comercial</div><h2 class="screen-title">Bandeja de pedidos especiales para aprobación</h2><div class="screen-who">💼 Actor: Asesor comercial</div><p class="screen-desc">Solo llegan casos especiales (crédito/volumen/precio), dejando pedidos estándar automatizados.</p><span class="hu-link">↗ HU-08</span></div>
+<hr class="divider"><div class="screen-section"><div class="screen-kicker">Pantalla 05 · Coordinador logístico</div><h2 class="screen-title">Dashboard operacional y calificación post-entrega</h2><div class="screen-who">📊 Actor: Coordinador + Cliente</div><p class="screen-desc">Incluye calificación del cliente y vista KPI operativa para seguimiento y mejora continua.</p><span class="hu-link">↗ HU-07 · HU-09</span></div>
+</main>
+<footer>© 2026 IPR Partes y Repuestos by Inverprimos · Universidad de Medellín — Proyecto Procesos de Negocio</footer>
+</body></html>
