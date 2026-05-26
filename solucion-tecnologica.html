@@ -3,948 +3,259 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IPR | Pantallas del Sistema</title>
+  <title>IPR | Solución Tecnológica</title>
   <link rel="stylesheet" href="styles.css" />
   <style>
-   /* ── PAGE-LEVEL TOKENS ────────────────────────────── */
-    .page-pantallas {
-      --green:        #1D9E75;
-      --green-dark:   #0F6E56;
-      --green-light:  #E1F5EE;
-      --green-mid:    #9FE1CB;
-      --blue:         #185FA5;
-      --blue-light:   #E6F1FB;
-      --blue-mid:     #B5D4F4;
-      --amber:        #854F0B;
-      --amber-light:  #FAEEDA;
-      --red:          #C0392B;
-      --red-light:    #FCEBEB;
-      --red-border:   #F7C1C1;
-      --red-text:     #791F1F;
-      --text:         #1a1a18;
-      --text-2:       #4a4a46;
-      --text-3:       #888780;
-      --border:       rgba(0,0,0,.1);
-      --border-2:     rgba(0,0,0,.18);
-      --bg-2:         #f2f0e8;
-      --bg-card:      #fff;
-      --radius:       10px;
-      --radius-lg:    14px;
+    .page-solucion {
+      --bg-card: var(--white);
+      --bg-2: var(--off-white);
+      --text: var(--navy);
+      --text-2: #374151;
+      --text-3: var(--slate);
+      --border-2: #d1d9e6;
+      --blue: #185FA5;
+      --blue-light: #E6F1FB;
+      --blue-mid: #B5D4F4;
+      --amber: #854F0B;
+      --amber-light: #FAEEDA;
+      --amber-mid: #FAC775;
+      --radius-lg: var(--radius);
     }
-
-    .page-pantallas .hero {
-      background: linear-gradient(135deg,#0F6E56 0%,#1D9E75 60%,#5DCAA5 100%);
+    .page-solucion .section-kicker {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: .5rem;
     }
-    .page-pantallas .hero .eyebrow { color: #d6fff0; }
-
-    /* ── LAYOUT ───────────────────────────────────────── */
-    .pantallas-wrap {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 2.5rem 1.5rem 5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 3rem;
+    .page-solucion section h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: .4rem;
     }
+    .page-solucion section h2 + p { color: var(--slate); font-size: .9rem; margin-bottom: 1.25rem; }
+    .page-solucion .divider { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
 
-    /* ── SCREEN BLOCK ─────────────────────────────────── */
-    .screen-block {
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
+    .problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0; }
+    @media (max-width: 600px) { .problem-grid { grid-template-columns: 1fr; } }
+    .problem-card {
+      padding: 1.25rem 1.375rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
     }
-
-    .screen-meta {
-      display: flex;
-      flex-direction: column;
-      gap: .35rem;
-    }
-
-    .screen-kicker {
-      font-size: 11px;
+    .problem-card.before { background: #fff7f4; border-top: 3px solid var(--orange); }
+    .problem-card.after { background: #f0f7ff; border-top: 3px solid #2563eb; }
+    .problem-card .tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .75rem;
+      font-weight: 800;
       letter-spacing: .12em;
       text-transform: uppercase;
-      color: var(--text-3);
-      font-weight: 700;
+      margin-bottom: .6rem;
     }
+    .problem-card.before .tag { color: var(--orange-dark); }
+    .problem-card.after .tag { color: #1d4ed8; }
+    .problem-card h3 { font-size: .9rem; font-weight: 700; margin-bottom: .4rem; line-height: 1.35; color: var(--navy); }
+    .problem-card p { font-size: .88rem; color: #374151; }
 
-    .screen-title {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: var(--text);
-      margin: 0;
-    }
-
-    .screen-who {
-      display: inline-flex;
-      gap: .35rem;
-      background: var(--green-light);
-      border: 1px solid var(--green-mid);
-      padding: 3px 12px;
-      border-radius: 999px;
-      color: var(--green-dark);
-      font-size: 12px;
-      font-weight: 600;
-      width: fit-content;
-      margin-top: .1rem;
-    }
-
-    .screen-desc {
-      font-size: .9rem;
-      color: var(--text-2);
-      line-height: 1.65;
-      max-width: 680px;
-    }
-
-    .hu-link {
-      display: inline-flex;
-      gap: .35rem;
-      color: var(--blue);
-      background: var(--blue-light);
-      border: 1px solid var(--blue-mid);
-      padding: 3px 12px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 600;
-      width: fit-content;
-    }
-
-    .how-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: .3rem;
-      margin: 0;
-      padding: 0;
-    }
-    .how-list li {
-      font-size: 13px;
-      color: var(--text-2);
-      display: flex;
-      gap: .5rem;
-      align-items: flex-start;
-    }
-    .how-list li::before {
-      content: '→';
-      color: var(--green);
-      font-weight: 700;
-      flex-shrink: 0;
-    }
-    .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
-
-    /* ── DEVICE FRAME ─────────────────────────────────── */
-    .device-frame {
-      background: #e8e6de;
-      border-radius: var(--radius-lg);
-      padding: 1.25rem;
+    .solution-box {
+      background: var(--white);
       border: 1px solid var(--border);
+      border-left: 3px solid var(--orange);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 1rem 1.25rem;
+      margin-top: 1rem;
     }
+    .solution-box h4 { font-size: .88rem; font-weight: 700; color: var(--orange-dark); margin-bottom: .35rem; }
+    .solution-box p { font-size: .88rem; color: var(--slate); }
 
-    /* ── MOCK WINDOW ──────────────────────────────────── */
-    .mock-window {
-      background: #f5f4f0;
+    /* PAIN POINTS */
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
+      gap: .75rem; margin: 1rem 0;
+    }
+    .pain-card {
+      background: var(--bg-card);
+      border: 0.5px solid var(--border);
       border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: 0 4px 24px rgba(0,0,0,.13);
-      font-family: 'Barlow', sans-serif;
+      padding: .875rem 1rem;
     }
+    .pain-icon { font-size: 1.25rem; margin-bottom: .4rem; }
+    .pain-card h4 { font-size: 13px; font-weight: 600; margin-bottom: .2rem; }
+    .pain-card p { font-size: 12px; color: var(--text-2); line-height: 1.4; }
 
-    /* ── SHARED MOCK PARTS ────────────────────────────── */
-    .mock-sidebar {
-      background: #ffffff;
-      border-right: 1px solid var(--border);
-      width: 200px;
-      flex-shrink: 0;
-      display: flex;
-      flex-direction: column;
-      padding: 1rem 0;
+    /* ACTORES */
+    .actores-row {
+      display: flex; flex-wrap: wrap; gap: .5rem; margin: .75rem 0;
     }
-
-    .mock-sidebar-logo {
-      padding: .5rem 1rem 1rem;
-      border-bottom: 1px solid var(--border);
-      margin-bottom: .75rem;
-    }
-    .mock-sidebar-logo .sb-name {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 800;
-      font-size: 1rem;
-      color: #1D9E75;
-    }
-    .mock-sidebar-logo .sb-role {
-      font-size: 10px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: var(--text-3);
-      font-weight: 600;
-    }
-
-    .mock-nav-item {
-      display: flex;
-      align-items: center;
-      gap: .55rem;
-      padding: .45rem 1rem;
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--text-3);
-      cursor: default;
-    }
-    .mock-nav-item.active {
-      background: #f0fdf8;
-      color: var(--green-dark);
-      border-left: 3px solid var(--green);
-    }
-    .mock-nav-item .nav-ico { font-size: 13px; }
-
-    .mock-new-btn {
-      margin: auto 1rem 1rem;
-      background: var(--orange, #f26522);
-      color: #fff;
-      border-radius: 8px;
-      padding: .5rem;
-      text-align: center;
-      font-size: 12px;
-      font-weight: 700;
-    }
-
-    .mock-topbar {
-      background: #fff;
-      border-bottom: 1px solid var(--border);
-      padding: .65rem 1.25rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-    .mock-topbar-title {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 700;
-      font-size: 1rem;
-      color: var(--text);
-    }
-    .mock-topbar-sub {
-      font-size: 11px;
-      color: var(--text-3);
-    }
-    .mock-topbar-search {
-      flex: 1;
-      max-width: 220px;
-      background: #f5f4f0;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: .3rem .7rem;
-      font-size: 11px;
-      color: var(--text-3);
-    }
-
-    /* ── BADGE ────────────────────────────────────────── */
-    .badge {
-      font-size: 11px;
-      padding: 2px 9px;
+    .actor-chip {
+      background: var(--bg-card);
+      border: 0.5px solid var(--border-2);
       border-radius: 999px;
-      font-weight: 600;
-      white-space: nowrap;
+      padding: .3rem .9rem;
+      font-size: 13px; font-weight: 500; color: var(--text);
     }
-    .badge-green   { background: var(--green-light);  color: var(--green-dark); }
-    .badge-blue    { background: var(--blue-light);   color: var(--blue); }
-    .badge-amber   { background: var(--amber-light);  color: var(--amber); }
-    .badge-red     { background: var(--red-light);    color: var(--red-text); }
-    .badge-gray    { background: #f0eeea;             color: var(--text-3); }
-    .badge-orange  { background: #fde8d8;             color: #c94f0f; }
-
-    /* ══════════════════════════════════════════════════
-       PANTALLA 01 — CONTROL DE EXISTENCIAS (HU-02)
-    ══════════════════════════════════════════════════ */
-    .mock-inv {
-      display: flex;
-      min-height: 480px;
+    .actor-chip.sys {
+      background: var(--orange-light);
+      border-color: var(--orange);
+      color: var(--orange-dark);
     }
 
-    .mock-inv-body {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
+    /* HISTORIAS */
+    .release-label {
+      font-size: 11px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: .09em; margin: 1.5rem 0 .6rem;
+      display: flex; align-items: center; gap: .5rem;
     }
+    .release-label::after {
+      content: ''; flex: 1; height: 0.5px; background: currentColor; opacity: .3;
+    }
+    .rl-r1 { color: var(--orange-dark); }
+    .rl-r2 { color: var(--blue); }
+    .rl-r3 { color: var(--amber); }
 
-    .mock-inv-hero {
-      padding: 1rem 1.25rem .75rem;
-      background: #fff;
-      border-bottom: 1px solid var(--border);
-    }
-    .mock-inv-hero h1 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.35rem;
-      font-weight: 800;
-      color: var(--text);
-      margin-bottom: .1rem;
-    }
-    .mock-inv-hero p {
-      font-size: 11px;
-      color: var(--text-3);
-      margin: 0;
-    }
-
-    .mock-alerts {
-      display: flex;
-      gap: .5rem;
-      margin-top: .6rem;
-    }
-    .mock-alert {
-      display: flex;
-      align-items: center;
-      gap: .4rem;
-      padding: .35rem .75rem;
-      border-radius: 8px;
-      font-size: 11px;
-      font-weight: 600;
-    }
-    .mock-alert-red    { background: var(--red-light);   border: 1px solid var(--red-border); color: var(--red-text); }
-    .mock-alert-orange { background: #fde8d8;            border: 1px solid #f6b99d;           color: #7c3212; }
-
-    .mock-inv-filters {
-      display: flex;
-      align-items: center;
-      gap: .5rem;
-      padding: .55rem 1.25rem;
-      background: #fff;
-      border-bottom: 1px solid var(--border);
-    }
-    .mock-filter-chip {
-      font-size: 10px;
-      font-weight: 600;
-      padding: .25rem .6rem;
-      border-radius: 6px;
-      border: 1px solid var(--border);
-      background: #fff;
-      color: var(--text-2);
-      display: flex;
-      align-items: center;
-      gap: .3rem;
-    }
-    .mock-filter-chip.primary { background: var(--green); color: #fff; border-color: var(--green); }
-
-    .mock-kpis {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
-      border-bottom: 1px solid var(--border);
-    }
-    .mock-kpi {
-      padding: .75rem 1rem;
-      border-right: 1px solid var(--border);
-      background: #fff;
-    }
-    .mock-kpi:last-child { border-right: none; }
-    .mock-kpi-label  { font-size: 10px; color: var(--text-3); font-weight: 600; text-transform: uppercase; letter-spacing: .06em; }
-    .mock-kpi-value  { font-family: 'Barlow Condensed', sans-serif; font-size: 1.35rem; font-weight: 800; color: var(--text); margin: .1rem 0; }
-    .mock-kpi-sub    { font-size: 10px; color: var(--text-3); }
-    .mock-kpi-chip   { display: inline-flex; align-items: center; font-size: 10px; font-weight: 700; padding: 1px 7px; border-radius: 999px; margin-bottom: .2rem; }
-    .chip-up   { background: #e1f5ee; color: var(--green-dark); }
-    .chip-down { background: var(--red-light); color: var(--red-text); }
-    .chip-warn { background: var(--amber-light); color: var(--amber); }
-    .chip-opt  { background: var(--green-light); color: var(--green-dark); }
-
-    .mock-kpi-dots { display: flex; gap: 3px; margin-top: .3rem; }
-    .dot { width: 16px; height: 16px; border-radius: 50%; }
-    .dot-red  { background: #e74c3c; }
-    .dot-more { background: #f2f0e8; border: 1px solid var(--border); font-size: 9px; display: flex; align-items: center; justify-content: center; color: var(--text-3); font-weight: 700; }
-
-    .mock-kpi-bar { margin-top: .4rem; height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
-    .mock-kpi-bar-fill { height: 100%; background: var(--green); border-radius: 2px; }
-
-    .mock-table-section {
-      flex: 1;
-      background: #fff;
-      overflow: auto;
-    }
-    .mock-table-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: .7rem 1.25rem;
-      border-bottom: 1px solid var(--border);
-    }
-    .mock-table-header h3 {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--text);
-      margin: 0;
-    }
-    .mock-table-header-actions { display: flex; gap: .4rem; }
-    .mock-icon-btn {
-      width: 28px; height: 28px;
-      border-radius: 7px;
-      border: 1px solid var(--border);
-      background: #fff;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 12px; cursor: default;
-    }
-    .mock-btn-primary {
-      background: var(--green);
-      color: #fff;
-      border-radius: 7px;
-      padding: .28rem .75rem;
-      font-size: 11px;
-      font-weight: 700;
-    }
-
-    .mock-inv-table { width: 100%; border-collapse: collapse; font-size: 11px; }
-    .mock-inv-table th {
-      background: #fafaf8;
-      padding: .4rem .8rem;
-      text-align: left;
-      font-size: 10px;
-      letter-spacing: .07em;
-      text-transform: uppercase;
-      color: var(--text-3);
-      font-weight: 700;
-      border-bottom: 1px solid var(--border);
-    }
-    .mock-inv-table td {
-      padding: .6rem .8rem;
-      border-bottom: 1px solid #f0eeea;
-      color: var(--text-2);
-      vertical-align: middle;
-    }
-    .mock-inv-table tr:last-child td { border-bottom: none; }
-
-    .prod-cell { display: flex; align-items: center; gap: .55rem; }
-    .prod-ico {
-      width: 28px; height: 28px;
-      background: #f0eeea;
-      border-radius: 7px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 13px; flex-shrink: 0;
-    }
-    .prod-name  { font-weight: 700; font-size: 11px; color: var(--text); }
-    .prod-sku   { font-size: 10px; color: var(--text-3); }
-    .stock-crit { color: #e74c3c; font-weight: 800; }
-    .stock-warn { color: var(--amber); font-weight: 700; }
-    .stock-ok   { font-weight: 700; color: var(--text); }
-
-    .mock-pagination {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: .55rem 1.25rem;
-      border-top: 1px solid var(--border);
-      background: #fff;
-    }
-    .mock-pagination span { font-size: 11px; color: var(--text-3); }
-    .page-btns { display: flex; gap: .25rem; }
-    .page-btn {
-      width: 24px; height: 24px;
-      border-radius: 6px;
-      border: 1px solid var(--border);
-      background: #fff;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 11px; font-weight: 600; color: var(--text-2);
-    }
-    .page-btn.active { background: var(--green); color: #fff; border-color: var(--green); }
-
-    /* ══════════════════════════════════════════════════
-       PANTALLA 02 — PANEL DE ÓRDENES DE BODEGA (HU-03)
-    ══════════════════════════════════════════════════ */
-    .mock-bodega {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .mock-bodega-cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: .6rem;
-      padding: .8rem 1.25rem;
-      background: #f5f4f0;
-    }
-
-    .orden-card {
-      background: #fff;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      padding: .8rem;
-      display: flex;
-      flex-direction: column;
-      gap: .4rem;
-    }
-    .orden-card-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .orden-id   { font-size: 11px; font-weight: 800; color: var(--text); }
-    .orden-dest { font-size: 10px; color: var(--text-3); margin-top: .1rem; }
-    .orden-items { font-size: 10px; color: var(--text-2); line-height: 1.5; }
-    .orden-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-top: .2rem;
-      padding-top: .4rem;
-      border-top: 1px solid #f0eeea;
-    }
-    .orden-time { font-size: 10px; color: var(--text-3); }
-    .btn-sm {
-      font-size: 10px;
-      font-weight: 700;
-      padding: 2px 9px;
-      border-radius: 6px;
-      background: var(--green);
-      color: #fff;
-    }
-    .btn-sm-gray {
-      font-size: 10px;
-      font-weight: 700;
-      padding: 2px 9px;
-      border-radius: 6px;
-      background: #f0eeea;
-      color: var(--text-3);
-    }
-
-    /* ══════════════════════════════════════════════════
-       PANTALLA 03 — NOVEDADES POST-DESPACHO (HU-06)
-    ══════════════════════════════════════════════════ */
-    .mock-novedades-body {
-      padding: .8rem 1.25rem;
-      display: flex;
-      flex-direction: column;
-      gap: .5rem;
-      background: #f5f4f0;
-    }
-
-    .novedad-card {
-      background: #fff;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      padding: .75rem 1rem;
-      display: flex;
-      align-items: flex-start;
-      gap: .75rem;
-    }
-    .novedad-card.priority { border-left: 3px solid #e74c3c; }
-    .novedad-icon { font-size: 1.25rem; flex-shrink: 0; }
-    .novedad-content { flex: 1; }
-    .novedad-title  { font-size: 12px; font-weight: 700; color: var(--text); }
-    .novedad-sub    { font-size: 11px; color: var(--text-3); margin-top: .1rem; }
-    .novedad-actions { display: flex; gap: .35rem; margin-top: .45rem; }
-    .action-btn {
-      font-size: 10px; font-weight: 700;
-      padding: 2px 9px; border-radius: 6px;
-      background: var(--green); color: #fff;
-    }
-    .action-btn-ghost {
-      font-size: 10px; font-weight: 700;
-      padding: 2px 9px; border-radius: 6px;
-      background: #f0eeea; color: var(--text-2);
-    }
-
-    .novedad-form {
-      background: #fff;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      padding: .75rem 1rem;
-    }
-    .novedad-form h4 { font-size: 12px; font-weight: 700; color: var(--text); margin-bottom: .5rem; }
-    .form-row { display: flex; gap: .5rem; margin-bottom: .4rem; }
-    .form-select {
-      flex: 1;
-      background: #f5f4f0;
-      border: 1px solid var(--border);
-      border-radius: 7px;
-      padding: .3rem .6rem;
-      font-size: 11px;
-      color: var(--text-2);
-    }
-    .form-input {
-      flex: 2;
-      background: #f5f4f0;
-      border: 1px solid var(--border);
-      border-radius: 7px;
-      padding: .3rem .6rem;
-      font-size: 11px;
-      color: var(--text-2);
-    }
-
-    /* ══════════════════════════════════════════════════
-       PANTALLA 04 — DESPACHO Y ENTREGA (HU-03/05)
-    ══════════════════════════════════════════════════ */
-    .mock-dispatch {
-      display: flex;
-      min-height: 460px;
-    }
-
-    .mock-dispatch-body {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      background: #f5f4f0;
-    }
-
-    .dispatch-topbar {
-      background: #fff;
-      border-bottom: 1px solid var(--border);
-      padding: .65rem 1.25rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .dispatch-main {
-      display: flex;
-      flex: 1;
-      gap: .75rem;
-      padding: .75rem 1.25rem;
-      overflow: auto;
-    }
-
-    .dispatch-left {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: .6rem;
-    }
-
-    .dispatch-right {
-      width: 240px;
-      display: flex;
-      flex-direction: column;
-      gap: .6rem;
-    }
-
-    /* Orders table */
-    .orders-card {
-      background: #fff;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      overflow: hidden;
-    }
-    .orders-card-header {
-      padding: .6rem .9rem;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .orders-card-header h3 {
-      font-size: 13px; font-weight: 700; color: var(--text); margin: 0;
-    }
-    .order-status-tabs {
-      display: flex; gap: .3rem;
-    }
-    .status-tab {
-      font-size: 10px; font-weight: 700;
-      padding: 2px 9px; border-radius: 999px;
-      background: #f0eeea; color: var(--text-3);
-    }
-    .status-tab.pendiente { background: #fde8d8; color: #7c3212; }
-    .status-tab.despachado { background: var(--blue-light); color: var(--blue); }
-    .status-tab.entregado { background: #f0eeea; color: var(--text-3); }
-
-    .orders-table { width: 100%; border-collapse: collapse; font-size: 11px; }
-    .orders-table th {
-      background: #fafaf8; padding: .35rem .7rem;
-      text-align: left; font-size: 10px; letter-spacing: .06em;
-      text-transform: uppercase; color: var(--text-3);
-      font-weight: 700; border-bottom: 1px solid var(--border);
-    }
-    .orders-table td {
-      padding: .55rem .7rem;
-      border-bottom: 1px solid #f0eeea;
-      color: var(--text-2); vertical-align: middle;
-    }
-    .orders-table tr:last-child td { border-bottom: none; }
-    .order-id-cell { font-weight: 700; color: var(--text); font-size: 11px; }
-    .eta-cell { font-weight: 700; color: var(--blue); }
-    .link-btn { color: var(--blue); font-weight: 700; font-size: 11px; }
-
-    /* Map card */
-    .map-card {
-      background: #fff;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      overflow: hidden;
-      flex: 1;
-    }
-    .map-card-body {
-      background: #d0d0c8;
-      height: 160px;
-      display: flex;
-      align-items: flex-start;
-      justify-content: flex-end;
-      padding: .5rem;
-      position: relative;
-    }
-    .map-bg-pattern {
-      position: absolute; inset: 0;
-      background:
-        repeating-linear-gradient(0deg, transparent, transparent 18px, rgba(255,255,255,.15) 18px, rgba(255,255,255,.15) 19px),
-        repeating-linear-gradient(90deg, transparent, transparent 28px, rgba(255,255,255,.1) 28px, rgba(255,255,255,.1) 29px);
-    }
-    .map-roads {
-      position: absolute; inset: 0; overflow: hidden;
-    }
-    .map-road {
-      position: absolute; background: rgba(255,255,255,.4);
-      border-radius: 2px;
-    }
-    .map-dot {
-      position: absolute;
-      width: 8px; height: 8px;
-      background: var(--orange, #f26522);
-      border-radius: 50%;
-      border: 2px solid #fff;
-      box-shadow: 0 1px 4px rgba(0,0,0,.3);
-    }
-    .map-tooltip {
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 2px 12px rgba(0,0,0,.2);
-      padding: .4rem .65rem;
-      position: relative;
-      z-index: 2;
-      font-size: 11px;
-    }
-    .map-tooltip strong { display: block; font-weight: 700; color: var(--text); }
-    .map-tooltip span   { color: var(--text-3); font-size: 10px; }
-
-    .map-card-footer {
-      padding: .45rem .8rem;
-      border-top: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .map-card-footer span { font-size: 11px; color: var(--text-3); }
-
-    /* Automation card */
-    .auto-card {
-      background: #fff;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      overflow: hidden;
-    }
-    .auto-card-header {
-      padding: .55rem .9rem;
-      border-bottom: 1px solid var(--border);
-      display: flex; align-items: center; gap: .4rem;
-    }
-    .auto-card-header h3 {
-      font-size: 12px; font-weight: 700; color: var(--text); margin: 0;
-    }
-    .auto-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: .5rem .9rem;
-      border-bottom: 1px solid #f0eeea;
-    }
-    .auto-row:last-child { border-bottom: none; }
-    .auto-row-left { }
-    .auto-row-title { font-size: 11px; font-weight: 700; color: var(--text); }
-    .auto-row-sub   { font-size: 10px; color: var(--text-3); }
-    .toggle {
-      width: 32px; height: 18px;
-      border-radius: 999px;
-      display: flex; align-items: center;
-      padding: 0 2px;
-      flex-shrink: 0;
-    }
-    .toggle.on  { background: var(--green); justify-content: flex-end; }
-    .toggle.off { background: #ccc; justify-content: flex-start; }
-    .toggle-thumb { width: 14px; height: 14px; background: #fff; border-radius: 50%; }
-
-    /* Notifications card */
-    .notif-card {
-      background: #fff;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      overflow: hidden;
-    }
-    .notif-card-header {
-      padding: .55rem .9rem;
-      border-bottom: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .notif-card-header h3 { font-size: 12px; font-weight: 700; color: var(--text); margin: 0; }
-    .notif-card-header a  { font-size: 11px; color: var(--blue); font-weight: 600; }
-    .notif-row {
-      display: flex;
-      align-items: flex-start;
-      gap: .55rem;
-      padding: .45rem .8rem;
-      border-bottom: 1px solid #f0eeea;
-      border-left: 3px solid var(--green);
-    }
-    .notif-row:nth-child(2) { border-left-color: var(--blue); }
-    .notif-row:last-child   { border-bottom: none; border-left-color: var(--text-3); }
-    .notif-ico { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
-    .notif-title { font-size: 11px; font-weight: 700; color: var(--text); }
-    .notif-sub   { font-size: 10px; color: var(--text-3); }
-
-    /* ══════════════════════════════════════════════════
-       PANTALLA 05 — BANDEJA COMERCIAL (HU-08)
-    ══════════════════════════════════════════════════ */
-    .mock-comercial-body {
-      padding: .75rem 1.25rem;
-      display: flex;
-      flex-direction: column;
-      gap: .5rem;
-      background: #f5f4f0;
-    }
-
-    .especial-card {
-      background: #fff;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      padding: .75rem 1rem;
-      display: flex;
-      align-items: center;
-      gap: .75rem;
-    }
-    .especial-card.urgent { border-left: 3px solid #e74c3c; }
-    .especial-ico { font-size: 1.1rem; flex-shrink: 0; }
-    .especial-mid { flex: 1; }
-    .especial-title { font-size: 12px; font-weight: 700; color: var(--text); }
-    .especial-sub   { font-size: 11px; color: var(--text-3); margin-top: .1rem; }
-    .especial-actions { display: flex; gap: .35rem; }
-
-    /* ══════════════════════════════════════════════════
-       PANTALLA 05 — DASHBOARD (HU-07 / HU-09)
-    ══════════════════════════════════════════════════ */
-    .mock-dashboard-body {
-      padding: .75rem 1.25rem;
-      background: #f5f4f0;
-      display: flex;
-      gap: .6rem;
-    }
-
-    .dash-col { display: flex; flex-direction: column; gap: .5rem; }
-    .dash-col-main { flex: 1; }
-    .dash-col-side { width: 200px; }
-
-    .dash-kpi-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: .5rem;
-    }
-    .dash-kpi {
-      background: #fff;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      padding: .65rem .8rem;
-    }
-    .dash-kpi-label { font-size: 10px; color: var(--text-3); font-weight: 600; text-transform: uppercase; letter-spacing: .05em; }
-    .dash-kpi-value { font-family: 'Barlow Condensed', sans-serif; font-size: 1.5rem; font-weight: 800; color: var(--text); }
-    .dash-kpi-trend { font-size: 10px; }
-    .trend-up   { color: var(--green-dark); }
-    .trend-down { color: var(--red-text); }
-
-    .dash-chart-card {
-      background: #fff;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      padding: .7rem .9rem;
-    }
-    .dash-chart-card h4 { font-size: 12px; font-weight: 700; color: var(--text); margin-bottom: .6rem; }
-    .mini-bars {
-      display: flex;
-      align-items: flex-end;
-      gap: 4px;
-      height: 60px;
-    }
-    .mini-bar {
-      flex: 1;
-      border-radius: 3px 3px 0 0;
-      background: var(--green-light);
-      position: relative;
-    }
-    .mini-bar.highlight { background: var(--green); }
-    .mini-bar-labels {
-      display: flex;
-      gap: 4px;
-      margin-top: 4px;
-    }
-    .mini-bar-label { flex: 1; text-align: center; font-size: 8px; color: var(--text-3); }
-
-    .calif-card {
-      background: #fff;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      padding: .7rem .9rem;
-    }
-    .calif-card h4 { font-size: 12px; font-weight: 700; color: var(--text); margin-bottom: .5rem; }
-    .calif-score {
-      display: flex;
-      align-items: baseline;
-      gap: .3rem;
-      margin-bottom: .3rem;
-    }
-    .calif-num { font-family: 'Barlow Condensed', sans-serif; font-size: 2rem; font-weight: 800; color: var(--text); }
-    .calif-stars { font-size: 14px; }
-    .calif-total { font-size: 11px; color: var(--text-3); }
-    .calif-bar-row { display: flex; align-items: center; gap: .4rem; margin-bottom: 3px; }
-    .calif-bar-lbl { font-size: 10px; color: var(--text-3); width: 30px; text-align: right; }
-    .calif-bar-track { flex: 1; height: 5px; background: #f0eeea; border-radius: 3px; overflow: hidden; }
-    .calif-bar-fill  { height: 100%; background: var(--green); border-radius: 3px; }
-
-    .dash-stat-card {
-      background: #fff;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      overflow: hidden;
-    }
-    .dash-stat-card-header {
-      padding: .5rem .75rem;
-      border-bottom: 1px solid var(--border);
-      font-size: 12px; font-weight: 700; color: var(--text);
-    }
-    .dash-stat-row {
-      display: flex;
-      justify-content: space-between;
-      padding: .4rem .75rem;
-      border-bottom: 1px solid #f0eeea;
-      font-size: 11px;
-    }
-    .dash-stat-row:last-child { border-bottom: none; }
-    .dash-stat-row span:first-child { color: var(--text-3); }
-    .dash-stat-row span:last-child  { font-weight: 700; color: var(--text); }
-
-    /* ── INTRO CARD ───────────────────────────────────── */
-    .intro-card {
-      background: #fff;
-      border: 1px solid var(--border);
+    .hu-card {
+      background: var(--bg-card);
+      border: 0.5px solid var(--border);
       border-radius: var(--radius-lg);
-      padding: 1.1rem 1.4rem;
+      overflow: hidden;
+      margin-bottom: .625rem;
     }
-    .intro-card p { font-size: .88rem; color: var(--text-2); }
-    .flow-chips { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .75rem; }
-    .chip {
-      font-size: 11px; padding: 3px 10px;
-      border-radius: 999px; border: 1px solid var(--border);
-      color: var(--text-2);
+    .hu-header {
+      display: flex; align-items: center; gap: .75rem;
+      padding: .875rem 1.125rem;
+      cursor: pointer; user-select: none;
     }
-    .chip.new { background: var(--green-light); color: var(--green-dark); border-color: var(--green-mid); }
-    .chip.exists { background: #f0eeea; color: var(--text-3); }
+    .hu-header:hover { background: var(--bg-2); }
+    .hu-badge {
+      font-size: 11px; font-weight: 700;
+      padding: 3px 10px; border-radius: 999px;
+      white-space: nowrap; letter-spacing: .04em;
+    }
+    .r1 .hu-badge { background: var(--orange-light); color: var(--orange-dark); }
+    .r2 .hu-badge { background: var(--blue-light); color: var(--blue); }
+    .r3 .hu-badge { background: var(--amber-light); color: var(--amber); }
 
-    /* ── SCREEN SECTION wrapper ───────────────────────── */
-    .screen-section {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
+    .hu-title { font-size: 14px; font-weight: 500; color: var(--text); flex: 1; }
+    .hu-chevron {
+      width: 16px; height: 16px; color: var(--text-3);
+      transition: transform .2s;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .hu-card.open .hu-chevron svg { transform: rotate(180deg); }
+
+    .hu-body {
+      display: none;
+      padding: 0 1.125rem 1.125rem;
+      border-top: 0.5px solid var(--border);
+    }
+    .hu-card.open .hu-body { display: block; }
+
+    .hu-story {
+      font-size: 13px; font-style: italic; color: var(--text-2);
+      margin: .875rem 0 .5rem;
+      padding: .75rem 1rem;
+      background: var(--bg-2);
+      border-left: 2.5px solid var(--border-2);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      line-height: 1.55;
+    }
+    .hu-story strong { font-style: normal; font-weight: 600; color: var(--text); }
+
+    .hu-body h4 {
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .08em; color: var(--text-3);
+      margin: 1rem 0 .5rem;
+    }
+    .hu-criteria { list-style: none; display: flex; flex-direction: column; gap: .35rem; }
+    .hu-criteria li {
+      font-size: 13px; color: var(--text-2);
+      display: flex; align-items: flex-start; gap: .5rem; line-height: 1.5;
+    }
+    .hu-criteria li::before {
+      content: '✓'; color: var(--orange); font-weight: 700;
+      flex-shrink: 0; margin-top: 2px;
     }
 
-    /* ── RESPONSIVE ───────────────────────────────────── */
-    @media (max-width: 680px) {
-      .mock-kpis { grid-template-columns: repeat(2,1fr); }
-      .mock-bodega-cards { grid-template-columns: 1fr; }
-      .dispatch-right { display: none; }
-      .mock-sidebar { display: none; }
-      .dash-col-side { display: none; }
-      .dash-kpi-row { grid-template-columns: 1fr 1fr; }
+    /* USM */
+    .usm-container {
+      overflow-x: auto; border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: var(--bg-card);
     }
+    table.usm {
+      width: 100%; border-collapse: collapse; min-width: 720px;
+    }
+    .usm thead tr { background: transparent; }
+    .usm .epic-cell { padding: .5rem .4rem; vertical-align: top; }
+    .usm .epic-pill {
+      background: var(--orange);
+      color: #fff;
+      font-size: 12px; font-weight: 600;
+      text-align: center;
+      padding: .65rem .5rem;
+      border-radius: var(--radius);
+      line-height: 1.3;
+    }
+    .usm .epic-pill span { display: block; font-size: 10px; opacity: .8; font-weight: 400; margin-top: 2px; }
+
+    .usm .rl-cell {
+      width: 72px; padding: .5rem .4rem; vertical-align: middle;
+      text-align: center;
+    }
+    .rl-tag {
+      font-size: 10px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .07em; line-height: 1.4;
+      padding: .4rem .3rem;
+      border-radius: var(--radius);
+    }
+    .rl-tag.r1 { background: var(--orange-light); color: var(--orange-dark); }
+    .rl-tag.r2 { background: var(--blue-light); color: var(--blue); }
+    .rl-tag.r3 { background: var(--amber-light); color: var(--amber); }
+
+    .usm tbody tr { border-top: 0.5px solid var(--border); }
+    .usm tbody tr.r1-row { border-top: 2px solid var(--orange); }
+    .usm tbody tr.r2-row { border-top: 2px solid var(--blue); }
+    .usm tbody tr.r3-row { border-top: 2px solid #BA7517; }
+
+    .usm .story-cell { padding: .4rem; vertical-align: top; }
+
+    .usm-card {
+      font-size: 11px; font-weight: 600;
+      padding: .5rem .65rem;
+      border-radius: 7px;
+      margin-bottom: .3rem;
+      line-height: 1.3;
+      cursor: pointer;
+      transition: opacity .15s, transform .1s;
+      border: 0.5px solid transparent;
+    }
+    .usm-card:hover { opacity: .75; transform: translateY(-1px); }
+    .usm-card:last-child { margin-bottom: 0; }
+
+    .usm-card.r1 { background: var(--orange-light); color: var(--orange-dark); border-color: var(--orange); }
+    .usm-card.r2 { background: var(--blue-light); color: #0C447C; border-color: var(--blue-mid); }
+    .usm-card.r3 { background: var(--amber-light); color: #633806; border-color: var(--amber-mid); }
+
+    /* MVP BADGE */
+    .mvp-badge {
+      display: inline-flex; align-items: center; gap: .3rem;
+      background: var(--orange); color: #fff;
+      font-size: 10px; font-weight: 700; letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 2px 8px; border-radius: 999px;
+      margin-left: .5rem; vertical-align: middle;
+    }
+
   </style>
 </head>
-<body class="page-pantallas">
+<body class="page-solucion">
 
 <header>
   <div class="header-inner">
@@ -962,815 +273,444 @@
       <a href="analisis-problema.html">Problema</a>
       <a href="situacion-actual.html">AS IS / TO BE</a>
       <a href="mejoras.html">Mejoras</a>
-<<<<<<< HEAD
-      <a href="solucion-tecnologica.html">Solución</a>
-      <a href="pantallas-sistema.html" class="active">Pantallas</a>
-=======
       <a href="solucion-tecnologica.html" class="active">Solución</a>
-      <a href="pantallas-sistema.html">Pantallas</a>
->>>>>>> dd7a55cefd0cc9fa256e55ea0aa635014e232c76
     </nav>
   </div>
 </header>
 
 <div class="hero">
   <div class="hero-inner">
-    <p class="eyebrow">Entregable 3 — Diseño de interfaces</p>
-    <h2>Pantallas del sistema propuesto</h2>
-    <p>Wireframes y descripción de funcionamiento de las 5 pantallas que conforman el flujo automatizado de IPR.</p>
+    <p class="eyebrow">Entregable 3 — Solución tecnológica</p>
+    <h2>Portal Logístico Integrado IPR</h2>
+    <p>Propuesta de solución, historias de usuario con criterios de aceptación y priorización por releases para el sistema de logística y despacho de IPR Partes y Repuestos.</p>
+    <div class="hero-tags">
+      <span class="hero-tag">Miguel Angel Arango</span>
+      <span class="hero-tag">Juan Camilo García Castro</span>
+      <span class="hero-tag">Universidad de Medellín</span>
+      <span class="hero-tag">Mayo 2026</span>
+    </div>
   </div>
 </div>
 
-<main class="pantallas-wrap">
+<main>
 
-  <!-- INTRO -->
-  <div class="intro-card">
-    <p>El flujo de compra actual (catálogo → carrito → pago) ya existe en la web de IPR y <strong>no se modifica</strong>. Las pantallas descritas son las <strong>5 nuevas interfaces</strong> que se activan a partir de que el cliente confirma el pago, cerrando el ciclo logístico integrado.</p>
-    <div class="flow-chips">
-      <span class="chip exists">Catálogo</span>
-      <span class="chip exists">Carrito</span>
-      <span class="chip exists">Pago</span>
-      <span class="chip new">▶ P01 · Confirmación y estado</span>
-      <span class="chip new">P02 · Bodega</span>
-      <span class="chip new">P03 · Novedades</span>
-      <span class="chip new">P04 · Centro de despacho</span>
-      <span class="chip new">P05 · Dashboard</span>
-    </div>
-  </div>
+  <!-- ==================== REFINAMIENTO ==================== -->
+  <section id="refinamiento">
+    <p class="section-kicker">01 — Refinamiento del problema</p>
+    <h2>Planteamiento refinado</h2>
+    <p>A partir del feedback de la exposición anterior, se precisa la causa raíz y se delimita el alcance de la solución tecnológica.</p>
 
-  <!-- ═══════════════════════════════════════
-       PANTALLA 01 — CONTROL DE EXISTENCIAS
-  ═══════════════════════════════════════ -->
-  <div class="screen-section">
-    <div class="screen-meta">
-      <div class="screen-kicker">Pantalla 01 · Operaciones internas</div>
-      <h2 class="screen-title">Control de Existencias — Inventario multi-sede en tiempo real</h2>
-      <div class="screen-who">📦 Actor: Coordinador logístico / Bodega</div>
-      <p class="screen-desc">Panel centralizado que muestra el stock en todas las sedes simultáneamente. Reemplaza la consulta manual y secuencial sede por sede. Los artículos por debajo del mínimo se resaltan en rojo y activan alertas automáticas.</p>
-      <div style="display:flex;gap:.4rem;flex-wrap:wrap">
-        <span class="hu-link">↗ HU-02 · Inventario multi-sede</span>
-        <span class="hu-link">↗ HU-03 · Orden automática</span>
+    <div class="problem-grid">
+      <div class="problem-card before">
+        <div class="tag">⚠ Versión anterior — vaga</div>
+        <h3>"La empresa tiene dificultades para atender a sus clientes a nivel nacional"</h3>
+        <p>Sin delimitación de proceso, sin actor específico y sin causa raíz identificada. No es accionable como requerimiento de sistema.</p>
+      </div>
+      <div class="problem-card after">
+        <div class="tag">✓ Versión refinada — específica</div>
+        <h3>Ausencia de integración entre el canal de pedidos, el inventario multi-sede y el seguimiento de despacho</h3>
+        <p>Los tres canales (web, WhatsApp, teléfono) operan en silos. El asesor intermedia cada pedido manualmente generando demoras, reprocesos y cero visibilidad para el cliente técnico.</p>
       </div>
     </div>
 
-    <div class="device-frame">
-      <div class="mock-window">
-        <!-- MAIN LAYOUT -->
-        <div class="mock-inv">
-          <!-- SIDEBAR -->
-          <div class="mock-sidebar">
-            <div class="mock-sidebar-logo">
-              <div class="sb-name">LogiCore</div>
-              <div class="sb-role">Global Controller</div>
-            </div>
-            <div class="mock-nav-item"><span class="nav-ico">⊞</span> Dashboard</div>
-            <div class="mock-nav-item active"><span class="nav-ico">📦</span> Inventory</div>
-            <div class="mock-nav-item"><span class="nav-ico">🚚</span> Dispatch</div>
-            <div class="mock-nav-item"><span class="nav-ico">🛒</span> Ordering</div>
-            <div class="mock-nav-item"><span class="nav-ico">📊</span> Analytics</div>
-            <div class="mock-new-btn">+ New Shipment</div>
-          </div>
+    <div class="solution-box">
+      <h4>Solución tecnológica propuesta</h4>
+      <p>Un <strong>portal logístico integrado</strong> que conecta el canal de pedidos con el inventario en tiempo real y automatiza la generación de órdenes, asignación de bodega óptima y notificaciones al cliente. El asesor solo interviene en pedidos especiales (crédito, volumen alto, precio negociado).</p>
+    </div>
 
-          <!-- BODY -->
-          <div class="mock-inv-body">
-            <!-- TOPBAR -->
-            <div class="mock-topbar">
-              <div>
-                <div class="mock-topbar-title">Control de Existencias</div>
-                <div class="mock-topbar-sub">Gestión de Inventario (HU-02) · Monitoreo en tiempo real · 4 almacenes</div>
-              </div>
-              <div class="mock-alerts">
-                <div class="mock-alert mock-alert-red">⚠️ <strong>Stock Crítico</strong> 12 artículos bajo el mínimo</div>
-                <div class="mock-alert mock-alert-orange">🚚 <strong>En Tránsito</strong> 5 entregas hoy</div>
-              </div>
-            </div>
-
-            <!-- FILTERS -->
-            <div class="mock-inv-filters">
-              <span style="font-size:11px;color:var(--text-3);font-weight:600;text-transform:uppercase;letter-spacing:.06em">Filtros:</span>
-              <span class="mock-filter-chip">Todos los Almacenes ▾</span>
-              <span class="mock-filter-chip">Todas las Categorías ▾</span>
-              <span class="mock-filter-chip primary">Limpiar Filtros</span>
-              <span style="margin-left:auto;display:flex;gap:.3rem">
-                <span class="mock-icon-btn">⬇</span>
-                <span class="mock-icon-btn">🖨</span>
-              </span>
-            </div>
-
-            <!-- KPIs -->
-            <div class="mock-kpis">
-              <div class="mock-kpi">
-                <div class="mock-kpi-chip chip-up">+2.4%</div>
-                <div class="mock-kpi-label">Capacidad Total</div>
-                <div class="mock-kpi-value">84.2%</div>
-                <div class="mock-kpi-bar"><div class="mock-kpi-bar-fill" style="width:84%"></div></div>
-              </div>
-              <div class="mock-kpi">
-                <div class="mock-kpi-chip chip-down" style="background:var(--red-light);color:var(--red-text)">12 SKUs</div>
-                <div class="mock-kpi-label">Stock Bajo</div>
-                <div class="mock-kpi-value" style="color:#e74c3c">Crítico</div>
-                <div class="mock-kpi-dots">
-                  <div class="dot dot-red"></div>
-                  <div class="dot dot-red"></div>
-                  <div class="dot dot-red"></div>
-                  <div class="dot dot-more">+9</div>
-                </div>
-              </div>
-              <div class="mock-kpi">
-                <div class="mock-kpi-chip chip-up" style="background:#f0eeea;color:var(--text-3)">MXN</div>
-                <div class="mock-kpi-label">Valor Inventario</div>
-                <div class="mock-kpi-value">$2.4M</div>
-                <div class="mock-kpi-sub">Actualizado hace 5 min</div>
-              </div>
-              <div class="mock-kpi">
-                <div class="mock-kpi-chip chip-opt">Óptimo</div>
-                <div class="mock-kpi-label">Rotación Media</div>
-                <div class="mock-kpi-value">18 Días</div>
-              </div>
-            </div>
-
-            <!-- TABLE -->
-            <div class="mock-table-section">
-              <div class="mock-table-header">
-                <h3>Detalle de Existencias</h3>
-                <div class="mock-table-header-actions">
-                  <span class="mock-btn-primary">Sincronizar ERP</span>
-                  <span style="font-size:11px;color:var(--blue);font-weight:600;padding:.28rem .6rem">Ver Historial</span>
-                </div>
-              </div>
-              <table class="mock-inv-table">
-                <thead>
-                  <tr>
-                    <th>Producto / SKU</th>
-                    <th>Almacén</th>
-                    <th>Categoría</th>
-                    <th>Stock Actual</th>
-                    <th>Mínimo</th>
-                    <th>Estado</th>
-                    <th>Acciones</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <div class="prod-cell">
-                        <div class="prod-ico">💻</div>
-                        <div><div class="prod-name">Pro-Book L340 Gen 5</div><div class="prod-sku">SKU: HW-9028-X</div></div>
-                      </div>
-                    </td>
-                    <td>Almacén Norte</td>
-                    <td><span class="badge badge-blue">Electrónicos</span></td>
-                    <td class="stock-crit">5 units</td>
-                    <td>15</td>
-                    <td><span class="badge badge-red">● Crítico</span></td>
-                    <td><span style="color:var(--blue);font-size:11px;font-weight:600">Reabastecer</span></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="prod-cell">
-                        <div class="prod-ico">🔧</div>
-                        <div><div class="prod-name">Bomba Hidráulica V8</div><div class="prod-sku">SKU: MC-1142-H</div></div>
-                      </div>
-                    </td>
-                    <td>Centro Logístico</td>
-                    <td><span class="badge badge-gray">Maquinaria</span></td>
-                    <td class="stock-ok">42 units</td>
-                    <td>20</td>
-                    <td><span class="badge badge-green">● Saludable</span></td>
-                    <td><span style="color:var(--text-3);font-size:11px">Ver detalles</span></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="prod-cell">
-                        <div class="prod-ico">🛠</div>
-                        <div><div class="prod-name">Kit de Herramientas Titanio</div><div class="prod-sku">SKU: TL-5590-T</div></div>
-                      </div>
-                    </td>
-                    <td>Puerto Hub</td>
-                    <td><span class="badge badge-amber">Componentes</span></td>
-                    <td class="stock-warn">12 units</td>
-                    <td>10</td>
-                    <td><span class="badge badge-amber">● Advertencia</span></td>
-                    <td><span style="color:var(--blue);font-size:11px;font-weight:600">Monitorear</span></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="prod-cell">
-                        <div class="prod-ico">📦</div>
-                        <div><div class="prod-name">Cajas Corrugadas Reforzadas</div><div class="prod-sku">SKU: PK-100-B</div></div>
-                      </div>
-                    </td>
-                    <td>Depósito Sur</td>
-                    <td><span class="badge badge-gray">Oficina</span></td>
-                    <td class="stock-ok">1,200 units</td>
-                    <td>500</td>
-                    <td><span class="badge badge-green">● Saludable</span></td>
-                    <td><span style="color:var(--text-3);font-size:11px">Ver detalles</span></td>
-                  </tr>
-                </tbody>
-              </table>
-              <div class="mock-pagination">
-                <span>Mostrando 1–4 de 128 artículos</span>
-                <div class="page-btns">
-                  <div class="page-btn">‹</div>
-                  <div class="page-btn active">1</div>
-                  <div class="page-btn">2</div>
-                  <div class="page-btn">3</div>
-                  <div class="page-btn">›</div>
-                </div>
-              </div>
-            </div>
-          </div><!-- /mock-inv-body -->
-        </div><!-- /mock-inv -->
-      </div><!-- /mock-window -->
-    </div><!-- /device-frame -->
-
-    <ul class="how-list">
-      <li>El stock de todas las sedes se consulta en paralelo y se actualiza en tiempo real, sin intervención del asesor.</li>
-      <li>Los artículos en estado <strong>Crítico</strong> generan una alerta automática visible en el panel superior.</li>
-      <li>Cada fila incluye acciones directas: <em>Reabastecer</em> abre una orden de compra pre-llenada.</li>
-      <li>El botón <em>Sincronizar ERP</em> actualiza el estado con el sistema contable de la empresa.</li>
-    </ul>
-  </div>
+    <div style="margin-top:1.5rem;">
+      <h3 style="font-size:14px;font-weight:600;margin-bottom:.6rem;color:var(--text)">Actores del sistema TO BE</h3>
+      <div class="actores-row">
+        <span class="actor-chip">👨‍🔧 Cliente técnico / distribuidor</span>
+        <span class="actor-chip sys">⚙️ Plataforma integrada (sistema)</span>
+        <span class="actor-chip">📦 Personal de bodega</span>
+        <span class="actor-chip">🚚 Transportador</span>
+        <span class="actor-chip">💼 Asesor comercial (casos especiales)</span>
+        <span class="actor-chip">📊 Coordinador logístico</span>
+      </div>
+    </div>
+  </section>
 
   <hr class="divider">
 
-  <!-- ═══════════════════════════════════════
-       PANTALLA 02 — ÓRDENES DE BODEGA
-  ═══════════════════════════════════════ -->
-  <div class="screen-section">
-    <div class="screen-meta">
-      <div class="screen-kicker">Pantalla 02 · Operaciones internas</div>
-      <h2 class="screen-title">Panel de órdenes de despacho — Bodega</h2>
-      <div class="screen-who">📦 Actor: Personal de bodega</div>
-      <p class="screen-desc">La orden llega automáticamente a bodega al confirmar el pago del cliente. Sin papel, sin comunicación manual con el asesor. El personal actualiza el estado de cada orden directamente desde el sistema.</p>
-      <div style="display:flex;gap:.4rem;flex-wrap:wrap">
-        <span class="hu-link">↗ HU-03 · Orden automática al pagar</span>
-        <span class="hu-link">↗ HU-05 · Bodega óptima</span>
+  <!-- ==================== PAIN POINTS ==================== -->
+  <section id="pain">
+    <p class="section-kicker">02 — Diagnóstico</p>
+    <h2>Puntos de dolor que resuelve la solución</h2>
+    <p>Cada historia de usuario atiende directamente uno o más de estos puntos identificados en el proceso AS IS.</p>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="pain-icon">📵</div>
+        <h4>Canales en silos</h4>
+        <p>Web, WhatsApp y teléfono sin vista unificada del pedido</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">🗃️</div>
+        <h4>Inventario manual</h4>
+        <p>Consulta secuencial sede por sede sin tiempo real</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">📝</div>
+        <h4>Órdenes en papel</h4>
+        <p>Generación manual, propensa a errores y sin trazabilidad</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">📭</div>
+        <h4>Sin tracking</h4>
+        <p>El cliente llama para saber el estado de su envío</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">🔄</div>
+        <h4>Novedades sin flujo</h4>
+        <p>Reprocesos manuales sin excepción definida ni trazabilidad</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">👤</div>
+        <h4>Asesor en todo</h4>
+        <p>Interviene en pedidos estándar que el sistema puede resolver</p>
       </div>
     </div>
-
-    <div class="device-frame">
-      <div class="mock-window">
-        <div style="display:flex;">
-          <!-- SIDEBAR -->
-          <div class="mock-sidebar">
-            <div class="mock-sidebar-logo">
-              <div class="sb-name">LogiCore</div>
-              <div class="sb-role">Global Controller</div>
-            </div>
-            <div class="mock-nav-item"><span class="nav-ico">⊞</span> Dashboard</div>
-            <div class="mock-nav-item"><span class="nav-ico">📦</span> Inventory</div>
-            <div class="mock-nav-item active"><span class="nav-ico">🚚</span> Dispatch</div>
-            <div class="mock-nav-item"><span class="nav-ico">🛒</span> Ordering</div>
-            <div class="mock-nav-item"><span class="nav-ico">📊</span> Analytics</div>
-            <div class="mock-new-btn">+ New Shipment</div>
-          </div>
-          <!-- BODY -->
-          <div style="flex:1;display:flex;flex-direction:column;">
-            <div class="mock-topbar">
-              <div>
-                <div class="mock-topbar-title">Órdenes de Despacho</div>
-                <div class="mock-topbar-sub">Generadas automáticamente al confirmar pago · HU-03</div>
-              </div>
-              <div style="display:flex;gap:.4rem;align-items:center">
-                <span class="badge badge-red">3 Pendientes</span>
-                <span class="badge badge-amber">1 En alistamiento</span>
-                <span class="badge badge-green">12 Completadas hoy</span>
-              </div>
-            </div>
-            <div class="mock-inv-filters">
-              <span class="mock-filter-chip">Todas las sedes ▾</span>
-              <span class="mock-filter-chip">Estado ▾</span>
-              <span class="mock-filter-chip">Hoy ▾</span>
-              <span style="margin-left:auto;display:flex;gap:.3rem">
-                <span class="mock-filter-chip primary">Exportar</span>
-              </span>
-            </div>
-            <div class="mock-bodega-cards">
-              <div class="orden-card" style="border-left:3px solid #e74c3c">
-                <div class="orden-card-top">
-                  <div><div class="orden-id">#ORD-2024-047</div><div class="orden-dest">🏙 Bogotá, DC · Domicilio</div></div>
-                  <span class="badge badge-red">Pendiente</span>
-                </div>
-                <div class="orden-items">• Compresor Embraco 1/4 HP × 2<br>• Filtro secador 3/8" × 5<br>• Sede origen: <strong>Medellín</strong></div>
-                <div class="orden-footer">
-                  <span class="orden-time">⏱ Recibida hace 3 min</span>
-                  <span class="btn-sm">Iniciar alistamiento</span>
-                </div>
-              </div>
-              <div class="orden-card" style="border-left:3px solid var(--amber)">
-                <div class="orden-card-top">
-                  <div><div class="orden-id">#ORD-2024-046</div><div class="orden-dest">🏙 Medellín · Retiro en sede</div></div>
-                  <span class="badge badge-amber">Alistando</span>
-                </div>
-                <div class="orden-items">• Mini split 12.000 BTU Samsung × 1<br>• Control remoto universal × 1<br>• Sede origen: <strong>Medellín</strong></div>
-                <div class="orden-footer">
-                  <span class="orden-time">⏱ Iniciado hace 18 min</span>
-                  <span class="btn-sm" style="background:var(--amber)">Listo para despacho</span>
-                </div>
-              </div>
-              <div class="orden-card" style="border-left:3px solid var(--text-3)">
-                <div class="orden-card-top">
-                  <div><div class="orden-id">#ORD-2024-045</div><div class="orden-dest">🏙 Cali · Domicilio</div></div>
-                  <span class="badge badge-green">Despachado</span>
-                </div>
-                <div class="orden-items">• Válvula solenoide 3/8" × 10<br>• Guía de transporte: <strong>TCC-8812</strong><br>• Transportador: Servientrega</div>
-                <div class="orden-footer">
-                  <span class="orden-time">✓ Despachado 09:42 am</span>
-                  <span class="btn-sm-gray">Ver trazabilidad</span>
-                </div>
-              </div>
-            </div>
-            <div style="padding:.5rem 1.25rem;background:#fff;border-top:1px solid var(--border);font-size:11px;color:var(--text-3)">
-              Mostrando 3 órdenes activas · <span style="color:var(--blue);font-weight:600">Ver historial completo →</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <ul class="how-list">
-      <li>La orden llega con todos los datos pre-llenados: ítems, cantidades, sede de origen, destino y modalidad de entrega.</li>
-      <li>El personal marca el estado (alistando / listo) desde el sistema sin comunicaciones con el área comercial.</li>
-      <li>Al marcar "Listo para despacho", el sistema notifica automáticamente al transportador asignado.</li>
-    </ul>
-  </div>
+  </section>
 
   <hr class="divider">
 
-  <!-- ═══════════════════════════════════════
-       PANTALLA 03 — NOVEDADES POST-DESPACHO
-  ═══════════════════════════════════════ -->
-  <div class="screen-section">
-    <div class="screen-meta">
-      <div class="screen-kicker">Pantalla 03 · Transportador / Asesor</div>
-      <h2 class="screen-title">Registro y gestión de novedades post-despacho</h2>
-      <div class="screen-who">🚚 Actor: Transportador → 💼 Asesor comercial</div>
-      <p class="screen-desc">El transportador registra novedades directamente en el sistema (daños, faltantes, dirección incorrecta). Cada novedad activa un flujo de excepción definido: el asesor recibe una alerta y el cliente es notificado automáticamente con opciones de resolución.</p>
-      <span class="hu-link">↗ HU-06 · Novedades post-despacho</span>
+  <!-- ==================== HISTORIAS ==================== -->
+  <section id="historias">
+    <p class="section-kicker">03 — Historias de usuario</p>
+    <h2>Historias de usuario y criterios de aceptación</h2>
+    <p>Haz clic en cada historia para expandir los criterios de aceptación.</p>
+
+    <!-- RELEASE 1 -->
+    <div class="release-label rl-r1">
+      Release 1 — MVP: canal unificado + stock en tiempo real
+      <span class="mvp-badge">MVP</span>
     </div>
 
-    <div class="device-frame">
-      <div class="mock-window">
-        <div style="display:flex;">
-          <div class="mock-sidebar">
-            <div class="mock-sidebar-logo">
-              <div class="sb-name">LogiCore</div>
-              <div class="sb-role">Global Controller</div>
-            </div>
-            <div class="mock-nav-item"><span class="nav-ico">⊞</span> Dashboard</div>
-            <div class="mock-nav-item"><span class="nav-ico">📦</span> Inventory</div>
-            <div class="mock-nav-item active"><span class="nav-ico">🚚</span> Novedades</div>
-            <div class="mock-nav-item"><span class="nav-ico">🛒</span> Ordering</div>
-            <div class="mock-nav-item"><span class="nav-ico">📊</span> Analytics</div>
-            <div class="mock-new-btn">+ Registrar novedad</div>
-          </div>
-          <div style="flex:1;display:flex;flex-direction:column;">
-            <div class="mock-topbar">
-              <div>
-                <div class="mock-topbar-title">Novedades post-despacho</div>
-                <div class="mock-topbar-sub">Flujo de excepción trazable · HU-06</div>
-              </div>
-              <div style="display:flex;gap:.4rem">
-                <span class="badge badge-red">2 Sin resolver</span>
-                <span class="badge badge-amber">1 En gestión</span>
-              </div>
-            </div>
-            <div class="mock-novedades-body">
-              <!-- Novedad 1 -->
-              <div class="novedad-card priority">
-                <div class="novedad-icon">📦</div>
-                <div class="novedad-content">
-                  <div class="novedad-title">Producto dañado en tránsito · #ORD-2024-039</div>
-                  <div class="novedad-sub">Cliente: Carlos Ríos · Barranquilla · Reportado hace 8 min · Transportador: TCC</div>
-                  <div style="margin-top:.3rem;display:flex;gap:.5rem;align-items:center;flex-wrap:wrap">
-                    <span class="badge badge-red">Sin resolver</span>
-                    <span style="font-size:11px;color:var(--text-3)">Compresor Embraco 1/2 HP — golpe en carcasa</span>
-                  </div>
-                  <div class="novedad-actions">
-                    <span class="action-btn">Reenvío</span>
-                    <span class="action-btn" style="background:var(--blue)">Reembolso</span>
-                    <span class="action-btn-ghost">Contactar cliente</span>
-                  </div>
-                </div>
-              </div>
-              <!-- Novedad 2 -->
-              <div class="novedad-card priority">
-                <div class="novedad-icon">📍</div>
-                <div class="novedad-content">
-                  <div class="novedad-title">Dirección incorrecta · #ORD-2024-041</div>
-                  <div class="novedad-sub">Cliente: Laura Méndez · Cali · Reportado hace 22 min</div>
-                  <div style="margin-top:.3rem">
-                    <span class="badge badge-amber">En gestión</span>
-                  </div>
-                  <div class="novedad-actions">
-                    <span class="action-btn">Actualizar dirección</span>
-                    <span class="action-btn-ghost">Ver historial</span>
-                  </div>
-                </div>
-              </div>
-              <!-- Formulario registro -->
-              <div class="novedad-form">
-                <h4>➕ Registrar nueva novedad</h4>
-                <div class="form-row">
-                  <div class="form-select"># Orden · ORD-2024-0__</div>
-                  <div class="form-select">Tipo: Daño / Faltante / Dirección ▾</div>
-                </div>
-                <div class="form-row">
-                  <div class="form-input" style="flex:1">Descripción de la novedad...</div>
-                </div>
-                <div style="display:flex;justify-content:flex-end;margin-top:.4rem">
-                  <span class="btn-sm">Registrar y notificar</span>
-                </div>
-              </div>
-            </div>
-          </div>
+    <div class="hu-card r1" onclick="toggleHU(this)">
+      <div class="hu-header">
+        <span class="hu-badge">HU-01</span>
+        <span class="hu-title">Realizar pedido desde portal unificado</span>
+        <span class="hu-chevron"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 4.5L7 9L11.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </div>
+      <div class="hu-body">
+        <div class="hu-story">
+          "Como <strong>técnico de refrigeración</strong>, necesito realizar mi pedido desde la plataforma web (o WhatsApp integrado) sin hablar con un asesor, <strong>para que</strong> pueda comprar en cualquier momento sin depender del horario comercial."
         </div>
+        <h4>Criterios de aceptación</h4>
+        <ul class="hu-criteria">
+          <li>El cliente puede buscar repuestos por código, nombre o categoría desde la plataforma.</li>
+          <li>El sistema muestra disponibilidad en tiempo real por la sede más cercana a la ciudad del cliente.</li>
+          <li>El cliente puede agregar ítems al carrito y confirmar el pedido sin intervención humana.</li>
+          <li>El pedido queda registrado en el sistema con número de referencia único visible para el cliente.</li>
+          <li>El flujo completo funciona en dispositivos móviles (diseño responsive).</li>
+        </ul>
       </div>
     </div>
 
-    <ul class="how-list">
-      <li>El transportador registra la novedad indicando tipo y descripción; el sistema la vincula al pedido automáticamente.</li>
-      <li>El asesor recibe una alerta inmediata y puede elegir la resolución (reenvío, reembolso o contacto directo) desde la misma pantalla.</li>
-      <li>El cliente recibe una notificación automática cuando se registra la novedad y cuando se resuelve.</li>
-      <li>Toda la trazabilidad (fecha, tipo, responsable, resolución) queda registrada en el historial del pedido.</li>
-    </ul>
-  </div>
+    <div class="hu-card r1" onclick="toggleHU(this)">
+      <div class="hu-header">
+        <span class="hu-badge">HU-02</span>
+        <span class="hu-title">Consultar inventario multi-sede en tiempo real</span>
+        <span class="hu-chevron"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 4.5L7 9L11.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </div>
+      <div class="hu-body">
+        <div class="hu-story">
+          "Como <strong>técnico de refrigeración</strong>, necesito saber si el repuesto que busco está disponible —y en qué ciudad— <strong>para que</strong> pueda planificar mi compra sin llamar al asesor ni esperar respuesta por WhatsApp."
+        </div>
+        <h4>Criterios de aceptación</h4>
+        <ul class="hu-criteria">
+          <li>La consulta de stock refleja el inventario actual de todas las sedes simultáneamente.</li>
+          <li>El sistema indica cantidad disponible por sede (Medellín, Bogotá, Cali, y demás ciudades).</li>
+          <li>Si el ítem no está en la ciudad del cliente, el sistema sugiere la sede más cercana con stock.</li>
+          <li>La información se actualiza sin necesidad de recargar la página (tiempo real).</li>
+          <li>El tiempo de respuesta de la consulta es inferior a 3 segundos.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="hu-card r1" onclick="toggleHU(this)">
+      <div class="hu-header">
+        <span class="hu-badge">HU-03</span>
+        <span class="hu-title">Generar orden de despacho automática al confirmar pago</span>
+        <span class="hu-chevron"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 4.5L7 9L11.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </div>
+      <div class="hu-body">
+        <div class="hu-story">
+          "Como <strong>personal de bodega</strong>, necesito recibir la orden de despacho digital tan pronto el cliente confirma el pago, <strong>para que</strong> pueda iniciar el alistamiento sin esperar que el asesor me entregue un papel."
+        </div>
+        <h4>Criterios de aceptación</h4>
+        <ul class="hu-criteria">
+          <li>Al confirmarse el pago, el sistema genera automáticamente la orden de despacho en formato digital.</li>
+          <li>La orden llega a la interfaz de bodega con todos los datos: ítems, cantidades, sede de origen y destino del cliente.</li>
+          <li>La orden incluye modalidad de entrega (domicilio o retiro en sede) y dirección cuando aplica.</li>
+          <li>Bodega puede marcar la orden como "en alistamiento" y "listo para despacho" desde el sistema.</li>
+          <li>No se requiere ninguna acción manual del asesor para pedidos de pago anticipado estándar.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- RELEASE 2 -->
+    <div class="release-label rl-r2">Release 2 — Trazabilidad y notificaciones proactivas</div>
+
+    <div class="hu-card r2" onclick="toggleHU(this)">
+      <div class="hu-header">
+        <span class="hu-badge">HU-04</span>
+        <span class="hu-title">Recibir notificaciones automáticas del estado del pedido</span>
+        <span class="hu-chevron"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 4.5L7 9L11.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </div>
+      <div class="hu-body">
+        <div class="hu-story">
+          "Como <strong>cliente técnico</strong>, necesito recibir actualizaciones automáticas del estado de mi pedido por WhatsApp o correo, <strong>para que</strong> no tenga que llamar al asesor para saber dónde está mi entrega."
+        </div>
+        <h4>Criterios de aceptación</h4>
+        <ul class="hu-criteria">
+          <li>El sistema envía notificación al confirmar el pedido, al iniciar alistamiento, al despachar y al entregar.</li>
+          <li>El cliente elige canal de notificación: WhatsApp, correo electrónico o ambos.</li>
+          <li>Cada notificación incluye número de pedido, estado actual y tiempo estimado de entrega.</li>
+          <li>El cliente puede ver el historial de estados desde un enlace incluido en la notificación.</li>
+          <li>Las notificaciones se envían en menos de 2 minutos después de cada cambio de estado.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="hu-card r2" onclick="toggleHU(this)">
+      <div class="hu-header">
+        <span class="hu-badge">HU-05</span>
+        <span class="hu-title">Asignación automática de bodega óptima de origen</span>
+        <span class="hu-chevron"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 4.5L7 9L11.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </div>
+      <div class="hu-body">
+        <div class="hu-story">
+          "Como <strong>plataforma integrada</strong>, necesito asignar automáticamente la bodega de origen según la ubicación del cliente y el stock disponible, <strong>para que</strong> el asesor no tenga que decidir manualmente qué sede despacha."
+        </div>
+        <h4>Criterios de aceptación</h4>
+        <ul class="hu-criteria">
+          <li>El sistema evalúa todas las sedes con stock disponible del ítem solicitado.</li>
+          <li>Asigna la bodega más cercana a la ciudad de destino del cliente.</li>
+          <li>En caso de empate por distancia, prioriza la sede con mayor cantidad de stock.</li>
+          <li>La asignación se ejecuta automáticamente al confirmar el pedido, sin intervención humana.</li>
+          <li>Si ninguna sede tiene stock completo, el sistema alerta al asesor para gestión especial.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="hu-card r2" onclick="toggleHU(this)">
+      <div class="hu-header">
+        <span class="hu-badge">HU-06</span>
+        <span class="hu-title">Registrar y gestionar novedades post-despacho</span>
+        <span class="hu-chevron"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 4.5L7 9L11.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </div>
+      <div class="hu-body">
+        <div class="hu-story">
+          "Como <strong>asesor comercial</strong>, necesito que las novedades (daños, faltantes, dirección incorrecta) se registren en el sistema con un flujo definido, <strong>para que</strong> pueda darles trazabilidad y resolución sin depender de mensajes por WhatsApp."
+        </div>
+        <h4>Criterios de aceptación</h4>
+        <ul class="hu-criteria">
+          <li>El transportador puede registrar novedades indicando tipo (daño, faltante, dirección) y descripción.</li>
+          <li>Cada novedad queda vinculada al pedido y genera alerta automática al asesor responsable.</li>
+          <li>El sistema ofrece opciones de resolución: reenvío, reembolso o contacto directo con el cliente.</li>
+          <li>El cliente recibe notificación automática cuando se registra una novedad en su pedido.</li>
+          <li>Todas las novedades quedan trazadas con fecha, tipo, responsable y estado de resolución.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- RELEASE 3 -->
+    <div class="release-label rl-r3">Release 3 — Experiencia avanzada y analítica operacional</div>
+
+    <div class="hu-card r3" onclick="toggleHU(this)">
+      <div class="hu-header">
+        <span class="hu-badge">HU-07</span>
+        <span class="hu-title">Calificar el servicio post-entrega</span>
+        <span class="hu-chevron"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 4.5L7 9L11.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </div>
+      <div class="hu-body">
+        <div class="hu-story">
+          "Como <strong>cliente técnico</strong>, necesito poder calificar la experiencia de entrega una vez recibo mi pedido, <strong>para que</strong> IPR pueda mejorar continuamente su servicio con base en retroalimentación real."
+        </div>
+        <h4>Criterios de aceptación</h4>
+        <ul class="hu-criteria">
+          <li>El sistema envía mensaje de calificación al cliente 1 hora después de marcada la entrega.</li>
+          <li>La calificación es de 1 a 5 estrellas con campo de comentario opcional.</li>
+          <li>Las respuestas quedan registradas y vinculadas al pedido correspondiente.</li>
+          <li>El coordinador comercial puede ver un dashboard con promedio de calificaciones por periodo y ciudad.</li>
+          <li>Calificaciones de 1 o 2 estrellas generan alerta automática al asesor para seguimiento inmediato.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="hu-card r3" onclick="toggleHU(this)">
+      <div class="hu-header">
+        <span class="hu-badge">HU-08</span>
+        <span class="hu-title">Gestionar pedidos especiales con intervención comercial</span>
+        <span class="hu-chevron"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 4.5L7 9L11.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </div>
+      <div class="hu-body">
+        <div class="hu-story">
+          "Como <strong>asesor comercial</strong>, necesito que el sistema me notifique únicamente los pedidos que requieren mi atención (crédito, gran volumen o precio negociado), <strong>para que</strong> pueda enfocarme en relaciones estratégicas sin saturarme con pedidos estándar."
+        </div>
+        <h4>Criterios de aceptación</h4>
+        <ul class="hu-criteria">
+          <li>El sistema identifica automáticamente pedidos que superan el límite de crédito registrado del cliente.</li>
+          <li>Pedidos con precio negociado y registrado previamente no requieren aprobación manual adicional.</li>
+          <li>El asesor recibe notificación priorizada para pedidos de gran volumen (umbral definible en configuración).</li>
+          <li>El asesor puede aprobar, modificar o rechazar el pedido especial desde la plataforma.</li>
+          <li>El cliente recibe notificación del estado de su pedido especial en cada etapa del proceso.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="hu-card r3" onclick="toggleHU(this)">
+      <div class="hu-header">
+        <span class="hu-badge">HU-09</span>
+        <span class="hu-title">Consultar historial de pedidos y analítica operacional</span>
+        <span class="hu-chevron"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 4.5L7 9L11.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </div>
+      <div class="hu-body">
+        <div class="hu-story">
+          "Como <strong>coordinador logístico</strong>, necesito acceder al historial completo de pedidos con sus estados y tiempos por etapa, <strong>para que</strong> pueda identificar cuellos de botella y tomar decisiones de mejora con datos reales."
+        </div>
+        <h4>Criterios de aceptación</h4>
+        <ul class="hu-criteria">
+          <li>El sistema registra timestamp de cada cambio de estado en todos los pedidos.</li>
+          <li>Se puede filtrar por sede, ciudad de destino, periodo de tiempo y estado del pedido.</li>
+          <li>El dashboard muestra tiempo promedio por etapa: alistamiento, despacho y entrega.</li>
+          <li>Se puede exportar el historial en formato Excel (.xlsx) o CSV.</li>
+          <li>Los datos están disponibles en tiempo real, sin necesidad de cierres o sincronizaciones manuales.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
   <hr class="divider">
 
-  <!-- ═══════════════════════════════════════
-       PANTALLA 04 — CENTRO DE DESPACHO Y ENTREGA
-  ═══════════════════════════════════════ -->
-  <div class="screen-section">
-    <div class="screen-meta">
-      <div class="screen-kicker">Pantalla 04 · Asesor comercial</div>
-      <h2 class="screen-title">Centro de Despacho y Entrega — Bandeja de pedidos especiales</h2>
-      <div class="screen-who">💼 Actor: Asesor comercial</div>
-      <p class="screen-desc">Solo los pedidos que requieren intervención (crédito, volumen alto, precio negociado) llegan a esta bandeja. Los pedidos estándar se procesan automáticamente. El asesor puede rastrear despachos en tiempo real y monitorear notificaciones enviadas a clientes.</p>
-      <div style="display:flex;gap:.4rem;flex-wrap:wrap">
-        <span class="hu-link">↗ HU-08 · Pedidos especiales</span>
-        <span class="hu-link">↗ HU-04 · Notificaciones automáticas</span>
-      </div>
+  <!-- ==================== STORY MAPPING ==================== -->
+  <section id="usm">
+    <p class="section-kicker">04 — Visual Story Mapping</p>
+    <h2>Mapa de historias de usuario</h2>
+    <p>Las épicas se organizan horizontalmente siguiendo el flujo del proceso (de izquierda a derecha). Las historias se priorizan verticalmente: Release 1 (MVP) arriba, releases posteriores abajo. Haz clic en una historia para ver sus criterios de aceptación.</p>
+
+    <div class="usm-container" style="margin-top:1.25rem">
+      <table class="usm">
+        <thead>
+          <tr>
+            <td style="width:72px;padding:.5rem .4rem;border:none"></td>
+            <td class="epic-cell" colspan="2">
+              <div class="epic-pill">🛒 Realizar pedido <span>Canal unificado</span></div>
+            </td>
+            <td class="epic-cell" colspan="2">
+              <div class="epic-pill">🗄️ Gestionar inventario <span>Stock multi-sede</span></div>
+            </td>
+            <td class="epic-cell" colspan="2">
+              <div class="epic-pill">🚚 Despacho y entrega <span>Automatización</span></div>
+            </td>
+            <td class="epic-cell" colspan="2">
+              <div class="epic-pill">📊 Seguimiento y mejora <span>Trazabilidad</span></div>
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- RELEASE 1 -->
+          <tr class="r1-row">
+            <td class="rl-cell">
+              <div class="rl-tag r1">R1<br>MVP</div>
+            </td>
+            <td class="story-cell">
+              <div class="usm-card r1" onclick="jumpTo('HU-01')">HU-01 · Pedido desde portal unificado</div>
+              <div class="usm-card r1" onclick="jumpTo('HU-01')">Búsqueda por código / nombre</div>
+            </td>
+            <td class="story-cell">
+              <div class="usm-card r1" onclick="jumpTo('HU-01')">Carrito y confirmación sin asesor</div>
+            </td>
+            <td class="story-cell">
+              <div class="usm-card r1" onclick="jumpTo('HU-02')">HU-02 · Stock en tiempo real</div>
+            </td>
+            <td class="story-cell">
+              <div class="usm-card r1" onclick="jumpTo('HU-02')">Consulta simultánea multi-sede</div>
+            </td>
+            <td class="story-cell">
+              <div class="usm-card r1" onclick="jumpTo('HU-03')">HU-03 · Orden automática al pagar</div>
+            </td>
+            <td class="story-cell">
+              <div class="usm-card r1" onclick="jumpTo('HU-03')">Interfaz de bodega en tiempo real</div>
+            </td>
+            <td class="story-cell"></td>
+            <td class="story-cell"></td>
+          </tr>
+          <!-- RELEASE 2 -->
+          <tr class="r2-row">
+            <td class="rl-cell">
+              <div class="rl-tag r2">R2<br>Traz.</div>
+            </td>
+            <td class="story-cell">
+              <div class="usm-card r2" onclick="jumpTo('HU-08')">HU-08 · Pedidos especiales</div>
+            </td>
+            <td class="story-cell"></td>
+            <td class="story-cell">
+              <div class="usm-card r2" onclick="jumpTo('HU-05')">HU-05 · Bodega óptima automática</div>
+            </td>
+            <td class="story-cell"></td>
+            <td class="story-cell">
+              <div class="usm-card r2" onclick="jumpTo('HU-06')">HU-06 · Novedades post-despacho</div>
+            </td>
+            <td class="story-cell"></td>
+            <td class="story-cell">
+              <div class="usm-card r2" onclick="jumpTo('HU-04')">HU-04 · Notificaciones automáticas</div>
+            </td>
+            <td class="story-cell"></td>
+          </tr>
+          <!-- RELEASE 3 -->
+          <tr class="r3-row">
+            <td class="rl-cell">
+              <div class="rl-tag r3">R3<br>Anal.</div>
+            </td>
+            <td class="story-cell"></td>
+            <td class="story-cell"></td>
+            <td class="story-cell"></td>
+            <td class="story-cell"></td>
+            <td class="story-cell"></td>
+            <td class="story-cell"></td>
+            <td class="story-cell">
+              <div class="usm-card r3" onclick="jumpTo('HU-07')">HU-07 · Calificación post-entrega</div>
+            </td>
+            <td class="story-cell">
+              <div class="usm-card r3" onclick="jumpTo('HU-09')">HU-09 · Historial y analítica</div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
-    <div class="device-frame">
-      <div class="mock-window">
-        <div class="mock-dispatch">
-          <!-- SIDEBAR -->
-          <div class="mock-sidebar">
-            <div class="mock-sidebar-logo">
-              <div class="sb-name">LogiCore</div>
-              <div class="sb-role">Global Controller</div>
-            </div>
-            <div class="mock-nav-item"><span class="nav-ico">⊞</span> Dashboard</div>
-            <div class="mock-nav-item"><span class="nav-ico">📦</span> Inventory</div>
-            <div class="mock-nav-item active"><span class="nav-ico">🚚</span> Dispatch</div>
-            <div class="mock-nav-item"><span class="nav-ico">🛒</span> Ordering</div>
-            <div class="mock-nav-item"><span class="nav-ico">📊</span> Analytics</div>
-            <div class="mock-new-btn">+ New Shipment</div>
-          </div>
-
-          <!-- BODY -->
-          <div class="mock-dispatch-body">
-            <div class="dispatch-topbar">
-              <div style="display:flex;align-items:center;gap:.5rem">
-                <span style="font-size:14px">🚚</span>
-                <div>
-                  <div class="mock-topbar-title" style="color:var(--green-dark)">Centro de Despacho y Entrega</div>
-                  <div class="mock-topbar-sub">Solo pedidos que requieren intervención · HU-08</div>
-                </div>
-              </div>
-              <div style="display:flex;gap:.75rem;font-size:12px;color:var(--text-3)">
-                <span>Soluciones</span><span>Precios</span>
-                <span class="badge badge-blue" style="cursor:default">Portal Login</span>
-                <span class="badge" style="background:var(--green);color:#fff;cursor:default">Contact Sales</span>
-              </div>
-            </div>
-
-            <div class="dispatch-main">
-              <div class="dispatch-left">
-                <!-- Orders table -->
-                <div class="orders-card">
-                  <div class="orders-card-header">
-                    <h3>Estado de Pedidos</h3>
-                    <div class="order-status-tabs">
-                      <span class="status-tab pendiente">● Pendiente</span>
-                      <span class="status-tab despachado">● Despachado</span>
-                      <span class="status-tab entregado">● Entregado</span>
-                    </div>
-                  </div>
-                  <table class="orders-table">
-                    <thead>
-                      <tr>
-                        <th>ID Pedido</th>
-                        <th>Destino</th>
-                        <th>Estado</th>
-                        <th>ETA</th>
-                        <th>Acción</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td class="order-id-cell">#ORD-2024-001</td>
-                        <td>Madrid, ES</td>
-                        <td><span class="badge badge-orange">PENDIENTE</span></td>
-                        <td style="color:var(--text-3)">--:--</td>
-                        <td><span class="link-btn">Ver Detalles</span></td>
-                      </tr>
-                      <tr>
-                        <td class="order-id-cell">#ORD-2024-002</td>
-                        <td>Barcelona, ES</td>
-                        <td><span class="badge badge-blue">DESPACHADO</span></td>
-                        <td class="eta-cell">14:30 PM</td>
-                        <td><span class="link-btn">Rastrear</span></td>
-                      </tr>
-                      <tr>
-                        <td class="order-id-cell">#ORD-2024-003</td>
-                        <td>Valencia, ES</td>
-                        <td><span class="badge badge-green">ENTREGADO</span></td>
-                        <td style="color:var(--text-3)">Completado</td>
-                        <td><span style="font-size:11px;color:var(--text-3)">Archivo</span></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-
-                <!-- Bottom row: automation + notifications -->
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem">
-                  <!-- Automation -->
-                  <div class="auto-card">
-                    <div class="auto-card-header">
-                      <span>⚙️</span>
-                      <h3>Automatización de Pedidos</h3>
-                    </div>
-                    <div class="auto-row">
-                      <div class="auto-row-left">
-                        <div class="auto-row-title">Auto-Despacho MVP</div>
-                        <div class="auto-row-sub">Despacha automáticamente pedidos prioritarios.</div>
-                      </div>
-                      <div class="toggle on"><div class="toggle-thumb"></div></div>
-                    </div>
-                    <div class="auto-row">
-                      <div class="auto-row-left">
-                        <div class="auto-row-title">Validación de Stock</div>
-                        <div class="auto-row-sub">Verifica inventario antes de confirmar orden.</div>
-                      </div>
-                      <div class="toggle off"><div class="toggle-thumb"></div></div>
-                    </div>
-                    <div class="auto-row">
-                      <div class="auto-row-left">
-                        <div class="auto-row-title">Optimización de Rutas</div>
-                        <div class="auto-row-sub">Agrupar entregas por cercanía geográfica.</div>
-                      </div>
-                      <div class="toggle on"><div class="toggle-thumb"></div></div>
-                    </div>
-                  </div>
-
-                  <!-- Notifications -->
-                  <div class="notif-card">
-                    <div class="notif-card-header">
-                      <h3>🔔 Actualizaciones a Clientes</h3>
-                      <a href="#">Configurar</a>
-                    </div>
-                    <div class="notif-row">
-                      <div class="notif-ico">💬</div>
-                      <div>
-                        <div class="notif-title">SMS Enviado: Confirmación de Pedido</div>
-                        <div class="notif-sub">Cliente: Juan Pérez (#ORD-001) · Hace 2 min</div>
-                      </div>
-                    </div>
-                    <div class="notif-row">
-                      <div class="notif-ico">📧</div>
-                      <div>
-                        <div class="notif-title">Email Enviado: En camino</div>
-                        <div class="notif-sub">Cliente: Sofía Ruiz (#ORD-002) · Hace 15 min</div>
-                      </div>
-                    </div>
-                    <div class="notif-row">
-                      <div class="notif-ico">✅</div>
-                      <div>
-                        <div class="notif-title">Notificación Push: Entregado</div>
-                        <div class="notif-sub">Cliente: Carlos M. (#ORD-003) · Hace 1 hora</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- RIGHT: MAP -->
-              <div class="dispatch-right">
-                <div class="map-card">
-                  <div class="map-card-body">
-                    <div class="map-bg-pattern"></div>
-                    <div class="map-roads">
-                      <div class="map-road" style="left:20%;top:35%;width:60%;height:3px;transform:rotate(-8deg)"></div>
-                      <div class="map-road" style="left:40%;top:15%;width:3px;height:70%"></div>
-                      <div class="map-road" style="left:10%;top:55%;width:45%;height:2px;transform:rotate(5deg)"></div>
-                      <div class="map-dot" style="left:30%;top:40%"></div>
-                      <div class="map-dot" style="left:60%;top:25%;background:var(--green)"></div>
-                      <div class="map-dot" style="left:45%;top:65%;background:#185FA5"></div>
-                    </div>
-                    <div class="map-tooltip">
-                      <strong>Rastreo en Vivo</strong>
-                      <span>3 Camiones en ruta</span>
-                    </div>
-                  </div>
-                  <div class="map-card-footer">
-                    <span>🗺 Vista en tiempo real</span>
-                    <span style="color:var(--blue);font-weight:600;font-size:11px">Ampliar ↗</span>
-                  </div>
-                </div>
-
-                <!-- Bandeja especiales -->
-                <div style="background:#fff;border-radius:10px;border:1px solid var(--border);overflow:hidden;">
-                  <div style="padding:.55rem .8rem;border-bottom:1px solid var(--border);font-size:12px;font-weight:700;color:var(--text);display:flex;align-items:center;justify-content:space-between;">
-                    <span>⚡ Requieren aprobación</span>
-                    <span class="badge badge-red">2</span>
-                  </div>
-                  <div style="padding:.55rem .8rem;border-bottom:1px solid #f0eeea;">
-                    <div style="font-size:11px;font-weight:700;color:var(--text)">#ORD-2024-048 · Crédito</div>
-                    <div style="font-size:10px;color:var(--text-3)">Distribuidora Polar · $4.2M · Limite excedido</div>
-                    <div style="display:flex;gap:.3rem;margin-top:.3rem">
-                      <span class="btn-sm" style="font-size:10px">Aprobar</span>
-                      <span class="btn-sm" style="font-size:10px;background:#e74c3c">Rechazar</span>
-                    </div>
-                  </div>
-                  <div style="padding:.55rem .8rem;">
-                    <div style="font-size:11px;font-weight:700;color:var(--text)">#ORD-2024-049 · Gran volumen</div>
-                    <div style="font-size:10px;color:var(--text-3)">Tecniaires S.A. · 500 unidades · +umbral</div>
-                    <div style="display:flex;gap:.3rem;margin-top:.3rem">
-                      <span class="btn-sm" style="font-size:10px">Revisar</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <ul class="how-list">
-      <li>Solo los pedidos con crédito excedido, volumen alto o precio negociado llegan a la bandeja del asesor; el resto se procesa solo.</li>
-      <li>El asesor puede aprobar, modificar o rechazar desde la misma pantalla sin salir del flujo.</li>
-      <li>El panel de automatización permite activar/desactivar reglas de despacho sin intervención de TI.</li>
-      <li>Las notificaciones enviadas a clientes quedan visibles en tiempo real para el equipo comercial.</li>
-    </ul>
-  </div>
-
-  <hr class="divider">
-
-  <!-- ═══════════════════════════════════════
-       PANTALLA 05 — DASHBOARD OPERACIONAL
-  ═══════════════════════════════════════ -->
-  <div class="screen-section">
-    <div class="screen-meta">
-      <div class="screen-kicker">Pantalla 05 · Coordinador logístico + Cliente</div>
-      <h2 class="screen-title">Dashboard operacional y calificación post-entrega</h2>
-      <div class="screen-who">📊 Actor: Coordinador logístico · ⭐ Cliente</div>
-      <p class="screen-desc">El sistema envía una solicitud de calificación al cliente 1 hora después de la entrega. El coordinador consulta en tiempo real los KPIs operativos: tiempos por etapa, calificaciones promedio y cuellos de botella por sede y ciudad.</p>
-      <div style="display:flex;gap:.4rem;flex-wrap:wrap">
-        <span class="hu-link">↗ HU-07 · Calificación post-entrega</span>
-        <span class="hu-link">↗ HU-09 · Historial y analítica</span>
-      </div>
-    </div>
-
-    <div class="device-frame">
-      <div class="mock-window">
-        <div style="display:flex;">
-          <div class="mock-sidebar">
-            <div class="mock-sidebar-logo">
-              <div class="sb-name">LogiCore</div>
-              <div class="sb-role">Global Controller</div>
-            </div>
-            <div class="mock-nav-item"><span class="nav-ico">⊞</span> Dashboard</div>
-            <div class="mock-nav-item"><span class="nav-ico">📦</span> Inventory</div>
-            <div class="mock-nav-item"><span class="nav-ico">🚚</span> Dispatch</div>
-            <div class="mock-nav-item"><span class="nav-ico">🛒</span> Ordering</div>
-            <div class="mock-nav-item active"><span class="nav-ico">📊</span> Analytics</div>
-            <div class="mock-new-btn">+ Exportar reporte</div>
-          </div>
-          <div style="flex:1;display:flex;flex-direction:column;">
-            <div class="mock-topbar">
-              <div>
-                <div class="mock-topbar-title">Dashboard Operacional</div>
-                <div class="mock-topbar-sub">Analítica en tiempo real · HU-07 · HU-09</div>
-              </div>
-              <div style="display:flex;gap:.4rem;align-items:center">
-                <span class="mock-filter-chip">Mayo 2024 ▾</span>
-                <span class="mock-filter-chip">Todas las sedes ▾</span>
-                <span class="badge badge-green" style="padding:3px 10px">En vivo</span>
-              </div>
-            </div>
-            <div class="mock-dashboard-body">
-              <div class="dash-col dash-col-main">
-                <!-- KPI Row -->
-                <div class="dash-kpi-row">
-                  <div class="dash-kpi">
-                    <div class="dash-kpi-label">Pedidos hoy</div>
-                    <div class="dash-kpi-value">128</div>
-                    <div class="dash-kpi-trend trend-up">↑ 14% vs ayer</div>
-                  </div>
-                  <div class="dash-kpi">
-                    <div class="dash-kpi-label">Tiempo medio entrega</div>
-                    <div class="dash-kpi-value">1.8 días</div>
-                    <div class="dash-kpi-trend trend-down">↓ 0.4 días vs sem. ant.</div>
-                  </div>
-                  <div class="dash-kpi">
-                    <div class="dash-kpi-label">Tasa entrega exitosa</div>
-                    <div class="dash-kpi-value">97.2%</div>
-                    <div class="dash-kpi-trend trend-up">↑ 2.1% vs mes ant.</div>
-                  </div>
-                </div>
-
-                <!-- Chart -->
-                <div class="dash-chart-card">
-                  <h4>Pedidos por ciudad — últimas 6 semanas</h4>
-                  <div class="mini-bars">
-                    <div class="mini-bar" style="height:40%"></div>
-                    <div class="mini-bar" style="height:55%"></div>
-                    <div class="mini-bar" style="height:48%"></div>
-                    <div class="mini-bar" style="height:70%"></div>
-                    <div class="mini-bar" style="height:62%"></div>
-                    <div class="mini-bar highlight" style="height:85%"></div>
-                  </div>
-                  <div class="mini-bar-labels">
-                    <div class="mini-bar-label">Sem 1</div>
-                    <div class="mini-bar-label">Sem 2</div>
-                    <div class="mini-bar-label">Sem 3</div>
-                    <div class="mini-bar-label">Sem 4</div>
-                    <div class="mini-bar-label">Sem 5</div>
-                    <div class="mini-bar-label">Sem 6</div>
-                  </div>
-                </div>
-
-                <!-- Tiempos por etapa -->
-                <div class="dash-stat-card">
-                  <div class="dash-stat-card-header">⏱ Tiempo promedio por etapa</div>
-                  <div class="dash-stat-row"><span>Confirmación → Alistamiento</span><span>18 min</span></div>
-                  <div class="dash-stat-row"><span>Alistamiento → Despacho</span><span>42 min</span></div>
-                  <div class="dash-stat-row"><span>Despacho → Entrega (Medellín)</span><span>4.2 horas</span></div>
-                  <div class="dash-stat-row"><span>Despacho → Entrega (nacional)</span><span>1.8 días</span></div>
-                </div>
-              </div>
-
-              <!-- SIDE COL -->
-              <div class="dash-col dash-col-side">
-                <!-- Calificación -->
-                <div class="calif-card">
-                  <h4>⭐ Calificación post-entrega</h4>
-                  <div class="calif-score">
-                    <div class="calif-num">4.7</div>
-                    <div class="calif-stars">⭐⭐⭐⭐⭐</div>
-                  </div>
-                  <div class="calif-total" style="margin-bottom:.5rem">Basado en 412 evaluaciones</div>
-                  <div class="calif-bar-row"><div class="calif-bar-lbl">5⭐</div><div class="calif-bar-track"><div class="calif-bar-fill" style="width:72%"></div></div><div style="font-size:10px;color:var(--text-3);width:28px;text-align:right">72%</div></div>
-                  <div class="calif-bar-row"><div class="calif-bar-lbl">4⭐</div><div class="calif-bar-track"><div class="calif-bar-fill" style="width:20%;background:#9FE1CB"></div></div><div style="font-size:10px;color:var(--text-3);width:28px;text-align:right">20%</div></div>
-                  <div class="calif-bar-row"><div class="calif-bar-lbl">3⭐</div><div class="calif-bar-track"><div class="calif-bar-fill" style="width:5%;background:var(--amber-light)"></div></div><div style="font-size:10px;color:var(--text-3);width:28px;text-align:right">5%</div></div>
-                  <div class="calif-bar-row"><div class="calif-bar-lbl">≤2⭐</div><div class="calif-bar-track"><div class="calif-bar-fill" style="width:3%;background:var(--red-light)"></div></div><div style="font-size:10px;color:var(--text-3);width:28px;text-align:right">3%</div></div>
-                  <div style="margin-top:.6rem;padding:.4rem .6rem;background:var(--red-light);border-radius:7px;border:1px solid var(--red-border)">
-                    <div style="font-size:10px;font-weight:700;color:var(--red-text)">⚠ 12 alertas ≤2⭐ este mes</div>
-                    <div style="font-size:10px;color:var(--text-3)">Asesor notificado automáticamente</div>
-                  </div>
-                </div>
-
-                <!-- Novedades resumen -->
-                <div class="dash-stat-card">
-                  <div class="dash-stat-card-header">🔄 Novedades del mes</div>
-                  <div class="dash-stat-row"><span>Daños en tránsito</span><span style="color:#e74c3c">3</span></div>
-                  <div class="dash-stat-row"><span>Faltantes</span><span style="color:var(--amber)">5</span></div>
-                  <div class="dash-stat-row"><span>Dir. incorrecta</span><span style="color:var(--amber)">7</span></div>
-                  <div class="dash-stat-row"><span>Resueltas</span><span style="color:var(--green-dark)">14 / 15</span></div>
-                </div>
-
-                <!-- Export -->
-                <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:.7rem .9rem">
-                  <div style="font-size:12px;font-weight:700;color:var(--text);margin-bottom:.5rem">📥 Exportar datos</div>
-                  <div style="display:flex;gap:.4rem;flex-wrap:wrap">
-                    <span class="btn-sm" style="cursor:default">Excel (.xlsx)</span>
-                    <span class="btn-sm" style="cursor:default;background:var(--blue)">CSV</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <ul class="how-list">
-      <li>El sistema envía la calificación al cliente 1 hora después de marcar la entrega; se registra vinculada al pedido.</li>
-      <li>Calificaciones de 1 o 2 estrellas generan una alerta automática al asesor para seguimiento inmediato.</li>
-      <li>El coordinador puede filtrar por sede, ciudad y periodo; el historial es exportable en .xlsx o CSV.</li>
-      <li>Cada entrega se convierte en un dato de mejora continua: tiempos, novedades y satisfacción en un solo panel.</li>
-    </ul>
-  </div>
+    <p style="font-size:12px;color:var(--text-3);margin-top:.75rem">
+      Leyenda: <span style="display:inline-flex;align-items:center;gap:.3rem;margin-right:.75rem"><span style="width:10px;height:10px;background:var(--green);border-radius:2px;display:inline-block"></span> Release 1 — MVP</span>
+      <span style="display:inline-flex;align-items:center;gap:.3rem;margin-right:.75rem"><span style="width:10px;height:10px;background:#185FA5;border-radius:2px;display:inline-block"></span> Release 2 — Trazabilidad</span>
+      <span style="display:inline-flex;align-items:center;gap:.3rem"><span style="width:10px;height:10px;background:#BA7517;border-radius:2px;display:inline-block"></span> Release 3 — Analítica</span>
+    </p>
+  </section>
 
 </main>
 
 <footer>© 2026 IPR Partes y Repuestos by Inverprimos · Universidad de Medellín — Proyecto Procesos de Negocio</footer>
+
+<script>
+  function toggleHU(card) {
+    card.classList.toggle('open');
+  }
+
+  function jumpTo(id) {
+    const cards = document.querySelectorAll('.hu-card');
+    for (const card of cards) {
+      const badge = card.querySelector('.hu-badge');
+      if (badge && badge.textContent.trim() === id) {
+        card.classList.add('open');
+        setTimeout(() => {
+          card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 50);
+        return;
+      }
+    }
+  }
+</script>
 
 </body>
 </html>
